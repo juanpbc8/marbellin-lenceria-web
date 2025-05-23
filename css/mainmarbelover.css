@@ -1,0 +1,58 @@
+.formulario-distribuidores {
+    background-color: #ffe6f0;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 800px;
+    border: 2px solid #d67fa3;
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+.formulario-distribuidores h2 {
+    text-align: center;
+    color: #b30059;
+    font-size: 26px;
+    margin-bottom: 25px;
+}
+
+.formulario-distribuidores form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.formulario-distribuidores label {
+    grid-column: span 1;
+    font-weight: bold;
+    color: #660033;
+}
+
+.formulario-distribuidores input,
+.formulario-distribuidores select,
+.formulario-distribuidores textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d67fa3;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.formulario-distribuidores textarea {
+    grid-column: span 2;
+}
+
+.formulario-distribuidores button {
+    grid-column: span 2;
+    padding: 12px;
+    background-color: #cc0066;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.formulario-distribuidores button:hover {
+    background-color: #a5004f;
+}

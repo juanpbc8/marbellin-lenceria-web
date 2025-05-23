@@ -4,13 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="/css/base/reset.css">
-  <link rel="stylesheet" href="/css/base/variable.css">
-  <link rel="stylesheet" href="/css/layout/footer.css">
-  <link rel="stylesheet" href="/css/layout/header.css">
+  <link rel="stylesheet" href="../css/base/reset.css">
+  <link rel="stylesheet" href="../css/base/variable.css">
+  <link rel="stylesheet" href="../css/layout/footer.css">
+  <link rel="stylesheet" href="../css/layout/header.css">
+  <link rel="stylesheet" href="../css/mainproductos.css">
+  <title>Document</title>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
       <div class="fila-superior">
         <!-- Logo-->
         <a href="index.html">
-          <img id="logo" src="/assets/icons/logo.png" alt="Logo de Marbellin">
+          <img id="logo" src="../assets/icons/logo.png" alt="Logo de Marbellin">
         </a>
         <!-- Div buscador-->
         <div class="buscador">
@@ -64,7 +65,10 @@
   </header>
 
   <!-- Main Section -->
-  <main></main>
+  <!-- Main Section -->
+  <main id="lista-productos" class="grid-productos">
+    <!-- Los productos se generarán aquí automáticamente -->
+  </main>
 
   <!-- Footer Section -->
   <footer id="contacto">
@@ -103,7 +107,7 @@
           <li><a href="">Crear cuenta</a></li>
           <li>
             <a href="">
-              <img src="/assets/icons/icono-libro-reclamaciones.svg" alt="Icono libro de reclamaciones">
+              <img src="../assets/icons/icono-libro-reclamaciones.svg" alt="Icono libro de reclamaciones">
             </a>
           </li>
         </ul>
@@ -128,6 +132,8 @@
     </section>
     <p id="derechos">&copy; 2025 Marbellin Ladies Lingerie. Todos los derechos reservados.</p>
   </footer>
+  <script src="../js/cargar-productos.js"></script>
+
 </body>
 
 </html>
