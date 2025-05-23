@@ -1,0 +1,83 @@
+/* Sección principal */
+.section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 3rem;
+    color: #d15179;
+    font-weight: bold;
+    font-family: serif;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    word-break: break-word;
+    padding: 0 20px;
+}
+
+/* Texto de la sección */
+.section p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* ✅ 3 columnas iguales */
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #ffe4ec;
+    border-radius: 10px;
+}
+
+.cuadro {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+    transition: transform 0.3s ease;
+}
+
+.cuadro:hover {
+    transform: translateY(-5px);
+    /* ✅ Efecto sutil al pasar el mouse */
+}
+
+/* Títulos de secciones */
+.subtitulo {
+    font-size: 1.5rem;
+    color: #d63384;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.subtitulo i {
+    font-size: 5rem;
+}
+
+.cuadro p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Iconos de columnas */
+/* .cuadro i {
+    font-size: 3em;
+    color: #e91e63;
+    margin-bottom: 10px;
+} */

@@ -14,7 +14,7 @@
 }
 
 #logo {
-    height: 40px;
+    height: 60px;
 }
 
 /* .logo {
@@ -29,8 +29,6 @@
     position: relative;
     display: flex;
     align-items: center;
-    border: 1px solid #f1a8b9;
-
 }
 
 .buscador input {
