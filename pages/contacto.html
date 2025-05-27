@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -12,10 +12,7 @@
   <link rel="stylesheet" href="../css/layout/footer.css">
   <link rel="stylesheet" href="../css/layout/header.css">
   <link rel="stylesheet" href="../css/layout/form.css">
-  <script src="../js/ubicacion-peru.js"></script>
-  <script src="../js/cargar-ubicacion.js"></script>
-  <title>Marbellin Lencería - Marbelover</title>
-
+  <title>Marbellin Lencería - Contacto</title>
 </head>
 
 <body>
@@ -77,8 +74,8 @@
   <!-- Main Section -->
   <main>
     <section class="formulario">
-      <h2>¿Quieres ser Distribuidor de Marbellin?</h2>
-      <p>Dejanos tus datos, nosotros nos encargaremos de contactarte.</p>
+      <h2>CONTÁCTANOS</h2>
+      <p>Para nosotros es importante escucharte,porfavor dejanos tu duda,consulta o sugerencia.</p>
       <form action="procesar_formulario.php" method="post">
         <label for="nombre">Nombre completo:</label>
         <input type="text" id="nombre" name="nombre" required>
@@ -87,25 +84,12 @@
         <input type="email" id="correo" name="correo" required>
 
         <label for="telefono">Número de teléfono:</label>
-        <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{9,15}">
+        <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{9}">
 
-        <label for="departamento">Departamento:</label>
-        <select id="departamento" name="departamento" required></select>
+        <label for="telefono">Asunto:</label>
+        <input type="tel" id="asunto" name="asunto" required>
 
-        <label for="provincia">Provincia:</label>
-        <select id="provincia" name="provincia" required></select>
-
-        <label for="distrito">Distrito:</label>
-        <select id="distrito" name="distrito" required></select>
-
-        <label for="negocio">¿Tiene un negocio actualmente?</label>
-        <select id="negocio" name="negocio" required>
-          <option value="">Seleccione una opción</option>
-          <option value="si">Sí</option>
-          <option value="no">No</option>
-        </select>
-
-        <label for="mensaje">Mensaje o comentarios adicionales:</label>
+        <label for="mensaje">Mensaje:</label>
         <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos más sobre ti..."></textarea>
 
         <button type="submit">Enviar solicitud</button>
@@ -114,7 +98,7 @@
   </main>
 
   <!-- Footer Section -->
-  <footer id>
+  <footer>
     <section id="footer1">
       <div class="column">
         <!-- Info cliente -->

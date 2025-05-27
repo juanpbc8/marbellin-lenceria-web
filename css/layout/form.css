@@ -1,4 +1,4 @@
-.formulario-distribuidores {
+.formulario {
     background-color: #ffe6f0;
     padding: 30px;
     margin: 20px auto;
@@ -8,28 +8,34 @@
     font-family: 'Arial', sans-serif;
 }
 
-.formulario-distribuidores h2 {
+.formulario h2 {
     text-align: center;
     color: #b30059;
     font-size: 26px;
     margin-bottom: 25px;
 }
 
-.formulario-distribuidores form {
+.formulario p {
+    text-align: center;
+    color: #000;
+    margin-bottom: 25px;
+}
+
+.formulario form {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
 }
 
-.formulario-distribuidores label {
+.formulario label {
     grid-column: span 1;
     font-weight: bold;
     color: #660033;
 }
 
-.formulario-distribuidores input,
-.formulario-distribuidores select,
-.formulario-distribuidores textarea {
+.formulario input,
+.formulario select,
+.formulario textarea {
     width: 100%;
     padding: 8px;
     border: 1px solid #d67fa3;
@@ -37,11 +43,11 @@
     font-size: 14px;
 }
 
-.formulario-distribuidores textarea {
+.formulario textarea {
     grid-column: span 2;
 }
 
-.formulario-distribuidores button {
+.formulario button {
     grid-column: span 2;
     padding: 12px;
     background-color: #cc0066;
@@ -53,6 +59,10 @@
     transition: background-color 0.3s ease;
 }
 
-.formulario-distribuidores button:hover {
+.formulario button:hover {
     background-color: #a5004f;
+}
+
+.formulario #asunto {
+    grid-column: span 2;
 }

@@ -1,0 +1,27 @@
+.detalle {
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+}
+
+.detalle img {
+    width: 400px;
+    border-radius: 10px;
+}
+
+.info {
+    max-width: 500px;
+}
+
+.precio {
+    font-size: 24px;
+    color: #b30059;
+    margin: 10px 0;
+}
+
+select,
+button {
+    margin-top: 10px;
+    padding: 8px;
+    font-size: 16px;
+}

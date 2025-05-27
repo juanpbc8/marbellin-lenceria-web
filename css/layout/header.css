@@ -130,3 +130,43 @@
     color: #ec0a8e;
     text-decoration: none;
 }
+
+/* Menu desplegable de categoria de productos*/
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f8bbd0;
+    padding: 10px;
+    list-style: none;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    min-width: 160px;
+    z-index: 9999;
+}
+
+.dropdown-menu li {
+    margin: 5px 0;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    display: block;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}

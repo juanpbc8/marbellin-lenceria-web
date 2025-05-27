@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../assets/icons/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="../css/base/reset.css">
@@ -11,7 +12,7 @@
   <link rel="stylesheet" href="../css/layout/footer.css">
   <link rel="stylesheet" href="../css/layout/header.css">
   <link rel="stylesheet" href="../css/mainindex.css">
-  <title>Marbellin Lencería</title>
+  <title>Marbellin Lencería - Inicio</title>
 </head>
 
 <body>
@@ -42,8 +43,14 @@
           <li>
             <a href="index.html">Inicio</a>
           </li>
-          <li>
+          <li class="dropdown">
             <a href="productos.html">Productos ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="productos.html?cat=cachetero">Cachetero</a></li>
+              <li><a href="productos.html?cat=bikini">Bikini</a></li>
+              <li><a href="productos.html?cat=semihilo">Semi Hilo</a></li>
+              <li><a href="productos.html?cat=topsito">Topsito</a></li>
+            </ul>
           </li>
           <li>
             <a href="nosotros.html">Nosotros</a>
@@ -52,7 +59,7 @@
             <a href="marbelover.html">Se una Marbelover</a>
           </li>
           <li>
-            <a href="#contacto">Contacto</a>
+            <a href="contacto.html">Contacto</a>
           </li>
           <li>
             <a href="https://surl.lu/htktvd" target="_blank">
@@ -84,7 +91,7 @@
     <section class="product-section">
       <h2>Productos Nuevos</h2>
       <div class="carousel-container">
-        <a class="product" href="producto.html">
+        <a class="product" href="producto-detalle.html?id=14">
           <img src="../assets/img/modelo-cachetero-señorial-floreado.png" alt="SEÑORIAL FLORADO" />
           <h3>SEÑORIAL FLORADO</h3>
           <p>S/77.00</p>
@@ -94,7 +101,7 @@
           <h3>SEMI HILO AVESTRUZ</h3>
           <p>S/71.00</p>
         </a>
-        <a class="product" href="producto.html">
+        <a class="product" href="producto-detalle.html?id=11">
           <img src="../assets/img/modelo-cachetero-dije-estampado.png" alt="CACHETERO DIJE ESTAMPADO" />
           <h3>CACHETERO DIJE ESTAMPADO</h3>
           <p>S/64.00</p>
@@ -115,27 +122,27 @@
     <section class="product-section">
       <h2>Más vendidos</h2>
       <div class="carousel-container">
-        <a class="product" href="producto.html">
+        <a class="product" href="producto-detalle.html?id=19">
           <img src="../assets/img/modelo-cachetero-semi-señorial-juvenil.png" alt="SEMI SEÑORIAL JUVEVIL" />
           <h3>SEMI SEÑORIAL JUVEVIL</h3>
           <p>S/69.00</p>
         </a>
-        <a class="product" href="producto.html">
+        <a class="product" href="producto-detalle.html?id=10">
           <img src="../assets/img/modelo-cachetero-corazon.png" alt="CACHETERO CORAZON" />
           <h3>CACHETERO CORAZON</h3>
           <p>S/63.00</p>
         </a>
-        <a class="product" href="producto.html">
+        <a class="product" href="producto-detalle.html?id=2">
           <img src="../assets/img/modelo-bikini-blonda.png" alt="BIKINI BLONDA" />
           <h3>BIKINI BLONDA</h3>
           <p>S/58.00</p>
         </a>
-        <a class="product" href="producto.html">
+        <a class="product" href="producto-detalle.html?id=17">
           <img src="../assets/img/modelo-semi-hilo-pretina-ancha.png" alt="SEMI HILO PRETINA ANCHA" />
           <h3>SEMI HILO PRETINA ANCHA</h3>
           <p>S/59.00</p>
         </a>
-        <a class="product" href="producto.html">
+        <a class="product" href="producto-detalle.html?id=1">
           <img src="../assets/img/modelo-bikini-animal-print.png" alt="BIKINI ANIMAL PRINT" />
           <h3>BIKINI ANIMAL PRINT</h3>
           <p>S/61.00</p>
@@ -145,7 +152,7 @@
   </main>
 
   <!-- Footer Section -->
-  <footer id="contacto">
+  <footer>
     <section id="footer1">
       <div class="column">
         <!-- Info cliente -->

@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../assets/icons/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="../css/base/reset.css">
@@ -11,7 +12,7 @@
   <link rel="stylesheet" href="../css/layout/footer.css">
   <link rel="stylesheet" href="../css/layout/header.css">
   <link rel="stylesheet" href="../css/mainproductos.css">
-  <title>Document</title>
+  <title>Marbellin Lencería - Productos</title>
 </head>
 
 <body>
@@ -42,8 +43,14 @@
           <li>
             <a href="index.html">Inicio</a>
           </li>
-          <li>
+          <li class="dropdown">
             <a href="productos.html">Productos ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="productos.html?cat=cachetero">Cachetero</a></li>
+              <li><a href="productos.html?cat=bikini">Bikini</a></li>
+              <li><a href="productos.html?cat=semihilo">Semi Hilo</a></li>
+              <li><a href="productos.html?cat=topsito">Topsito</a></li>
+            </ul>
           </li>
           <li>
             <a href="nosotros.html">Nosotros</a>
@@ -52,7 +59,7 @@
             <a href="marbelover.html">Se una Marbelover</a>
           </li>
           <li>
-            <a href="#contacto">Contacto</a>
+            <a href="contacto.html">Contacto</a>
           </li>
           <li>
             <a href="https://surl.lu/htktvd" target="_blank">
@@ -65,13 +72,12 @@
   </header>
 
   <!-- Main Section -->
-  <!-- Main Section -->
   <main id="lista-productos" class="grid-productos">
-    <!-- Los productos se generarán aquí automáticamente -->
+    <!-- Los productos se generan aquí automáticamente -->
   </main>
 
   <!-- Footer Section -->
-  <footer id="contacto">
+  <footer id>
     <section id="footer1">
       <div class="column">
         <!-- Info cliente -->
@@ -132,6 +138,8 @@
     </section>
     <p id="derechos">&copy; 2025 Marbellin Ladies Lingerie. Todos los derechos reservados.</p>
   </footer>
+
+  <script src="../js/productos.js"></script>
   <script src="../js/cargar-productos.js"></script>
 
 </body>
