@@ -1,19 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const params = new URLSearchParams(window.location.search);
-    const id = parseInt(params.get("id"));
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"));
 
-    const producto = productos.find(p => p.id === id);
+  const producto = productos.find(p => p.id === id);
 
-    const contenedor = document.getElementById("detalle-producto");
+  const contenedor = document.getElementById("detalle-producto");
 
-    if (producto) {
-        contenedor.innerHTML = `
+  if (producto) {
+    contenedor.innerHTML = `
     <section class="detalle">
       <img src="${producto.imagen}" alt="${producto.nombre}">
       <div class="info">
         <h2>${producto.nombre}</h2>
         <p class="precio">${producto.precio}</p>
-        <p class="descripcion">Descripción detallada del producto. Aquí puedes personalizar por producto.</p>
+        <p class="descripcion">${producto.descripcion}</p>
 
         <label for="color">Color:</label>
         <select id="color">
@@ -34,8 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     </section>
   `;
-    } else {
-        contenedor.innerHTML = `<p>Producto no encontrado.</p>`;
-    }
+  } else {
+    contenedor.innerHTML = `<p>Producto no encontrado.</p>`;
+  }
 })
 
