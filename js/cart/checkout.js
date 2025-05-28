@@ -37,7 +37,7 @@ function renderizarCheckout() {
 botonPagar.addEventListener("click", () => {
     alert("¡Gracias por tu compra!");
     vaciarCarrito();
-    window.location.href = "../index.html";
+    window.location.href = "../../index.html";
 });
 
 renderizarCheckout();
