@@ -17,6 +17,9 @@ export function iniciarSesion() {
 
         localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
         alert("¡Bienvenido " + usuario.nombre + "!");
-        window.location.href = "../../index.html";
+        const basePath = window.location.hostname === "juanpbc8.github.io"
+            ? "/marbellin-lenceria-web/"
+            : "/";
+        window.location.href = `${basePath}index.html`;
     });
 }

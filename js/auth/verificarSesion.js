@@ -1,6 +1,9 @@
 export function verificarSesion() {
     const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
     if (!usuario) {
-        window.location.href = "../../pages/login.html";
+        const basePath = window.location.hostname === "juanpbc8.github.io"
+            ? "/marbellin-lenceria-web/"
+            : "/";
+        window.location.href = `${basePath}pages/login.html`;
     }
 }

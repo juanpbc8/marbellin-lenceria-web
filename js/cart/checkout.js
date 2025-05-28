@@ -37,7 +37,10 @@ function renderizarCheckout() {
 botonPagar.addEventListener("click", () => {
     alert("¡Gracias por tu compra!");
     vaciarCarrito();
-    window.location.href = "../../index.html";
+    const basePath = window.location.hostname === "juanpbc8.github.io"
+        ? "/marbellin-lenceria-web/"
+        : "/";
+    window.location.href = `${basePath}pages/checkout.html`;
 });
 
 renderizarCheckout();

@@ -32,6 +32,9 @@ export function mostrarCarritoMini() {
     });
 
     btnPagar.addEventListener("click", () => {
-        window.location.href = "../../pages/checkout.html";
+        const basePath = window.location.hostname === "juanpbc8.github.io"
+            ? "/marbellin-lenceria-web/"
+            : "/";
+        window.location.href = `${basePath}pages/checkout.html`;
     });
 }

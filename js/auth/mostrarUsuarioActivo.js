@@ -10,7 +10,10 @@ export function mostrarUsuarioActivo() {
             const confirmar = confirm("¿Deseas cerrar sesión?");
             if (confirmar) {
                 localStorage.removeItem("usuarioActivo");
-                window.location.href = "../../pages/login.html";
+                const basePath = window.location.hostname === "juanpbc8.github.io"
+                    ? "/marbellin-lenceria-web/"
+                    : "/";
+                window.location.href = `${basePath}pages/login.html`;
             }
         });
     }
