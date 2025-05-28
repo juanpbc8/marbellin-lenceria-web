@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="css/layout/footer.css">
   <link rel="stylesheet" href="css/layout/header.css">
   <link rel="stylesheet" href="css/mainindex.css">
-  <title>Marbellin Lencería - Inicio</title>
+  <title>Marbellin Lencería</title>
 </head>
 
 <body>
@@ -33,8 +33,16 @@
         </div>
         <!-- Div iconos-->
         <div class="iconos">
-          <i class="fas fa-shopping-cart"></i>
-          <i class="fas fa-user-circle"></i>
+          <div class="contenedor-carrito-hover">
+            <a href="pages/checkout.html">
+              <i class="fas fa-shopping-cart icono-carrito"></i>
+            </a>
+            <div class="mini-carrito oculto">
+              <ul class="lista-carrito"></ul>
+              <button class="btn-ir-a-pagar">Pagar</button>
+            </div>
+          </div>
+          <a href="pages/login.html"><i class="fas fa-user-circle icono-usuario"></i></a>
         </div>
       </div>
       <!-- Menu -->
@@ -185,7 +193,7 @@
       <div class="column">
         <h3>CUENTA</h3>
         <ul>
-          <li><a href="">Crear cuenta</a></li>
+          <li><a href="pages/login.html">Crear cuenta</a></li>
           <li>
             <a href="">
               <img src="assets/icons/icono-libro-reclamaciones.svg" alt="Icono libro de reclamaciones">
@@ -199,7 +207,7 @@
       </div>
       <!-- Info contacto -->
       <div class="column">
-        <h3>CONTACTO</h3>
+        <h3>TIENDA FÍSICA</h3>
         <p>
           Prolongación Huánuco 2010<br>
           Esquina con Av. Isabel La Católica<br>
@@ -209,10 +217,18 @@
         <p>Correo:
           <a href="mailto:marbellin.lenceriafina@gmail.com">marbellin.lenceriafina@gmail.com</a>
         </p>
+        <div class="map-container">
+          <iframe class="map-frame"
+            src="https://www.google.com/maps?q=Prolongación+Huánuco+2010,+La+Victoria,+Lima,+Perú&output=embed"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
       </div>
     </section>
     <p id="derechos">&copy; 2025 Marbellin Ladies Lingerie. Todos los derechos reservados.</p>
   </footer>
+  <script type="module" src="js/cart/main-carrito.js"></script>
+
+  <!-- <script type="module" src="js/auth/main-header.js"></script> -->
 </body>
 
 </html>

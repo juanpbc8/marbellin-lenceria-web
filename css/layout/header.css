@@ -1,25 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@100&family=Roboto:wght@300&display=swap');
-
 /*Fila superior del nav*/
 .fila-superior {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 4rem;
-    /*30px*/
     margin: 0 auto;
     padding: 0.3rem 0.3rem;
-    /*10px 0px*/
-    /* background-color: #f1a8b9; */
 }
 
 #logo {
     height: 60px;
 }
-
-/* .logo {
-    flex-shrink: 0;
-} */
 
 /*Buscador*/
 .buscador {
@@ -72,24 +63,72 @@
 
 .iconos i {
     font-size: 30px;
-    cursor: pointer;
     transition: color 0.3s ease;
+}
+
+.iconos a {
+    color: #000;
 }
 
 .iconos i:hover {
     color: #c70039;
 }
 
-/* #carrito-icono {
-    padding: 6px 12px;
-    border-radius: 30px;
-    margin-right: 25px;
-} */
+/* Mini carrito hover*/
+.contenedor-carrito-hover {
+    position: relative;
+}
 
-/* #carrito-icono:focus {
-    outline: none;
-    box-shadow: none;
-} */
+.mini-carrito {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    width: 280px;
+    display: none;
+    flex-direction: column;
+    z-index: 9999;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.mini-carrito.mostrar {
+    display: flex;
+}
+
+.lista-carrito {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: sans-serif;
+}
+
+.lista-carrito li {
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.btn-ir-a-pagar {
+    margin-top: 10px;
+    background-color: #c70039;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-ir-a-pagar:hover {
+    background-color: #a3002d;
+}
+
 
 /*Fila inferior del nav*/
 .fila-inferior {

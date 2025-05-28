@@ -125,7 +125,6 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    /* ✅ Separación entre productos */
 }
 
 /* Producto individual */
@@ -153,9 +152,9 @@
     height: auto;
     max-height: 300px;
     object-fit: contain;
+    /* mask-image: linear-gradient(black 95%, transparent); */
     /* ✅ Siempre muestra toda la imagen */
     margin-bottom: 1rem;
-    /* ✅ Separación de texto */
 }
 
 .product h3 {

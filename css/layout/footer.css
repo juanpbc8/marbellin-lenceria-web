@@ -51,6 +51,23 @@ footer {
     margin-bottom: 1rem;
 }
 
+/* Mapa */
+.map-container {
+    margin-top: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.map-frame {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    border: none;
+}
+
 /* Redes sociales */
 .social-buttons {
     display: flex;

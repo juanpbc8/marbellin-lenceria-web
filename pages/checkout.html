@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../assets/icons/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="../css/base/reset.css">
   <link rel="stylesheet" href="../css/base/variable.css">
   <link rel="stylesheet" href="../css/layout/footer.css">
   <link rel="stylesheet" href="../css/layout/header.css">
-  <link rel="stylesheet" href="../css/layout/form.css">
-  <script src="../js/ubicacion-peru.js"></script>
-  <script src="../js/cargar-ubicacion.js"></script>
-  <title>Marbellin - Marbelover</title>
+  <link rel="stylesheet" href="../css/checkout.css">
+  <title>Marbellin - Resumen del Pedido</title>
 
 </head>
 
@@ -82,47 +79,35 @@
     </nav>
   </header>
 
-  <!-- Main Section -->
-  <main>
-    <section class="formulario">
-      <h2>¿Quieres ser Distribuidor de Marbellin?</h2>
-      <p>Dejanos tus datos, nosotros nos encargaremos de contactarte.</p>
-      <form action="" method="post">
-        <label for="nombre">Nombre completo:</label>
-        <input type="text" id="nombre" name="nombre" required>
-
-        <label for="correo">Correo electrónico:</label>
-        <input type="email" id="correo" name="correo" required>
-
-        <label for="telefono">Número de teléfono:</label>
-        <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{9}">
-
-        <label for="departamento">Departamento:</label>
-        <select id="departamento" name="departamento" required></select>
-
-        <label for="provincia">Provincia:</label>
-        <select id="provincia" name="provincia" required></select>
-
-        <label for="distrito">Distrito:</label>
-        <select id="distrito" name="distrito" required></select>
-
-        <label for="negocio">¿Tiene un negocio actualmente?</label>
-        <select id="negocio" name="negocio" required>
-          <option value="">Seleccione una opción</option>
-          <option value="si">Sí</option>
-          <option value="no">No</option>
-        </select>
-
-        <label for="mensaje">Mensaje o comentarios adicionales:</label>
-        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos más sobre ti..."></textarea>
-
-        <button type="submit">Enviar solicitud</button>
-      </form>
-    </section>
+  <!-- Seccion Main-->
+  <main class="resumen-contenedor">
+    <h1>Resumen de tu pedido</h1>
+    <div class="tabla-productos">
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio unitario</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="contenidoCheckout">
+          <!-- Aquí se insertan dinámicamente los productos -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" style="text-align: right; font-weight: bold">Total:</td>
+            <td id="totalCheckout">S/.0.00</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <button id="botonPagar">Confirmar y Pagar</button>
   </main>
 
   <!-- Footer Section -->
-  <footer id>
+  <footer>
     <section id="footer1">
       <div class="column">
         <!-- Info cliente -->
@@ -188,6 +173,8 @@
     </section>
     <p id="derechos">&copy; 2025 Marbellin Ladies Lingerie. Todos los derechos reservados.</p>
   </footer>
+
+  <script type="module" src="../js/cart/checkout.js"></script>
   <script type="module" src="../js/cart/main-carrito.js"></script>
 </body>
 

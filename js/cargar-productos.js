@@ -1,3 +1,5 @@
+import { productos } from "./productos.js";
+
 document.addEventListener("DOMContentLoaded", () => {
     const contenedor = document.getElementById("lista-productos");
 
@@ -9,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         a.innerHTML = `
             <img src="${producto.imagen}" alt="${producto.nombre}">
             <h3>${producto.nombre}</h3>
-            <p>${producto.precio}</p>
+            <p>S/${producto.precio.toFixed(2)}</p>
         `;
 
         contenedor.appendChild(a);
