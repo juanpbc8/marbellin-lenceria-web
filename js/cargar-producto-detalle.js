@@ -20,13 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="precio">S/.${producto.precio.toFixed(2)}</p>
         <p class="descripcion">${producto.descripcion}</p>
 
-        <label for="color">Color:</label>
-        <select id="color">
-          <option value="">Seleccionar</option>
-          <option>Rosado</option>
-          <option>Negro</option>
-          <option>Rojo</option>
-        </select>
+        <div class="selector-color">
+          <p><strong>Colores disponibles:</strong></p>
+          <div class="colores-disponibles">
+            <span class="color-box" data-color="Rosado" title="Rosado" style="background-color: #f8cdd5;"></span>
+            <span class="color-box" data-color="Rojo" title="Rojo" style="background-color: #e53935;"></span>
+            <span class="color-box" data-color="Negro" title="Negro" style="background-color: #000000;"></span>
+          </div>
+        </div>
 
         <label for="talla">Talla:</label>
         <select id="talla">
@@ -37,6 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <option>XL</option>
         </select>
 
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" min="1" value="1" />
+
         <button id="btnAgregarCarrito">Agregar al carrito</button>
 
         <div class="tabla-tallas">
@@ -44,10 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <table>
             <thead>
               <tr>
-                <th>Talla</th>
-                <th>Busto (cm)</th>
-                <th>Cintura (cm)</th>
-                <th>Cadera (cm)</th>
+                <th>Talla</th><th>Busto (cm)</th><th>Cintura (cm)</th><th>Cadera (cm)</th>
               </tr>
             </thead>
             <tbody>
@@ -62,20 +63,32 @@ document.addEventListener("DOMContentLoaded", () => {
     </section>
   `;
 
+  // Manejo de selección de color
+  let colorSeleccionado = "";
+  document.querySelectorAll(".color-box").forEach(box => {
+    box.addEventListener("click", () => {
+      document.querySelectorAll(".color-box").forEach(b => b.classList.remove("seleccionado"));
+      box.classList.add("seleccionado");
+      colorSeleccionado = box.dataset.color;
+    });
+  });
+
+  // Evento del botón
   const btnAgregar = document.getElementById("btnAgregarCarrito");
   btnAgregar.addEventListener("click", () => {
-    const color = document.getElementById("color").value;
     const talla = document.getElementById("talla").value;
+    const cantidad = parseInt(document.getElementById("cantidad").value);
 
-    if (!color || !talla) {
-      alert("Por favor selecciona el color y la talla antes de continuar.");
+    if (!colorSeleccionado || !talla || cantidad < 1) {
+      alert("Por favor selecciona color, talla y una cantidad válida.");
       return;
     }
 
     agregarAlCarrito({
-      id: `${producto.id}-${color}-${talla}`,
-      nombre: `${producto.nombre} (${color}, Talla ${talla})`,
-      precio: producto.precio
+      id: `${producto.id}-${colorSeleccionado}-${talla}`,
+      nombre: `${producto.nombre} (${colorSeleccionado}, Talla ${talla})`,
+      precio: producto.precio,
+      cantidad: cantidad
     });
 
     alert("Producto añadido al carrito.");

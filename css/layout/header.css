@@ -51,6 +51,77 @@
     background-color: #a3002d;
 }
 
+/* Resultados desplegables del buscador */
+.resultados-busqueda {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 12px 12px;
+    z-index: 9999;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 0;
+    margin-top: 5px;
+    font-family: 'sans-serif';
+}
+
+.resultados-busqueda.oculto {
+    display: none;
+}
+
+.item-busqueda {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.item-busqueda:hover {
+    background-color: #fbe4ec;
+}
+
+.item-busqueda img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 12px;
+}
+
+.info-busqueda {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nombre-producto {
+    font-weight: bold;
+    font-size: 16px;
+    flex: 1;
+}
+
+.precio-producto {
+    font-size: 16px;
+    color: #c70039;
+    font-weight: bold;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+.mensaje-sin-resultados {
+    padding: 10px 15px;
+    color: #888;
+    font-size: 14px;
+}
+
+
 /* Iconos */
 .iconos {
     display: flex;

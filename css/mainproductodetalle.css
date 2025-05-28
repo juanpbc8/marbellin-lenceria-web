@@ -107,3 +107,65 @@
     background-color: #fff0f6;
     color: #333;
 }
+
+/*Cuadros de colores*/
+.colores-disponibles {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.color-box {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.3s;
+}
+
+.color-box:hover {
+    transform: scale(1.1);
+}
+
+
+.color-box.seleccionado {
+    border-color: #c70039;
+    box-shadow: 0 0 6px rgba(199, 0, 57, 0.5);
+}
+
+#cantidad {
+    width: 80px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/*Mostrar noombre del color al hacer hover*/
+.color-box {
+    position: relative;
+}
+
+.color-box::after {
+    content: attr(data-color);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.color-box:hover::after {
+    opacity: 1;
+}

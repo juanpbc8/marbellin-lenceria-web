@@ -14,13 +14,14 @@ export function agregarAlCarrito(producto) {
     const existente = carrito.find((item) => item.id === producto.id);
 
     if (existente) {
-        existente.cantidad += 1;
+        existente.cantidad += producto.cantidad;
     } else {
-        carrito.push({ ...producto, cantidad: 1 });
+        carrito.push({ ...producto });
     }
 
     guardarCarrito(carrito);
 }
+
 
 // Vaciar carrito
 export function vaciarCarrito() {
