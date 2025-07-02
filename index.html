@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="css/base/variable.css">
   <link rel="stylesheet" href="css/layout/footer.css">
   <link rel="stylesheet" href="css/layout/header.css">
-  <link rel="stylesheet" href="css/mainindex.css">
+  <link rel="stylesheet" href="css/layout/whatsapp.css">
+  <link rel="stylesheet" href="css/index.css">
   <title>Marbellin Lencería</title>
 </head>
 
@@ -34,6 +35,7 @@
         </div>
         <!-- Div iconos-->
         <div class="iconos">
+          <!-- Carrito de compras -->
           <div class="contenedor-carrito-hover">
             <a href="pages/checkout.html">
               <i class="fas fa-shopping-cart icono-carrito"></i>
@@ -43,7 +45,13 @@
               <button class="btn-ir-a-pagar">Pagar</button>
             </div>
           </div>
-          <a href="pages/login.html"><i class="fas fa-user-circle icono-usuario"></i></a>
+          <!-- Ícono de usuario con menú desplegable -->
+          <div class="contenedor-usuario-hover">
+            <i class="fas fa-user-circle icono-usuario"></i>
+            <div class="menu-usuario oculto">
+              <!-- Este contenido será generado dinámicamente por JS -->
+            </div>
+          </div>
         </div>
       </div>
       <!-- Menu -->
@@ -61,15 +69,9 @@
               <li><a href="pages/productos.html?cat=topsito">Topsito</a></li>
             </ul>
           </li>
-          <li>
-            <a href="pages/nosotros.html">Nosotros</a>
-          </li>
-          <li>
-            <a href="pages/marbelover.html">Se una Marbelover</a>
-          </li>
-          <li>
-            <a href="pages/contacto.html">Contacto</a>
-          </li>
+          <li><a href="pages/nosotros.html">Nosotros</a></li>
+          <li><a href="pages/marbelover.html">Se una Marbelover</a></li>
+          <li><a href="pages/contacto.html">Contacto</a></li>
           <li>
             <a href="https://surl.lu/htktvd" target="_blank">
               Nuestro Catálogo
@@ -84,12 +86,18 @@
   <main>
     <!-- Foto de portada -->
     <section id="cover-photo">
-      <img id="cover-image" src="assets/img/portada-1.png" alt="Imagen de portada">
+      <div id="cover-images">
+        <img class="cover-slide" src="assets/img/portada-1.png" alt="Portada 1">
+        <img class="cover-slide" src="assets/img/portada-2.png" alt="Portada 2">
+        <img class="cover-slide" src="assets/img/portada-3.png" alt="Portada 3">
+      </div>
       <div class="cover-text">
         <h1>Marbellin Lencería Fina</h1>
         <p>Tu tienda de ropa interior con estilo y elegancia.</p>
-        <a href="" class="cover-btn">Explorar colección</a>
+        <a href="pages/productos.html" class="cover-btn">Explorar colección</a>
       </div>
+      <div id="cover-indicators"></div>
+
     </section>
     <!-- Mensaje bienvenida -->
     <section id="inicio">
@@ -100,7 +108,7 @@
     <section class="product-section">
       <h2>Productos Nuevos</h2>
       <div class="carousel-container">
-        <a class="product" href="pages/producto-detalle.html?id=14">
+        <a class="product" href="pages/producto-detalle.html?id=1049">
           <img src="assets/img/modelo-cachetero-señorial-floreado.png" alt="SEÑORIAL FLORADO" />
           <h3>SEÑORIAL FLORADO</h3>
           <p>S/77.00</p>
@@ -110,7 +118,7 @@
           <h3>SEMI HILO AVESTRUZ</h3>
           <p>S/71.00</p>
         </a>
-        <a class="product" href="pages/producto-detalle.html?id=11">
+        <a class="product" href="pages/producto-detalle.html?id=1052">
           <img src="assets/img/modelo-cachetero-dije-estampado.png" alt="CACHETERO DIJE ESTAMPADO" />
           <h3>CACHETERO DIJE ESTAMPADO</h3>
           <p>S/64.00</p>
@@ -131,33 +139,42 @@
     <section class="product-section">
       <h2>Más vendidos</h2>
       <div class="carousel-container">
-        <a class="product" href="pages/producto-detalle.html?id=19">
+        <a class="product" href="pages/producto-detalle.html?id=1048">
           <img src="assets/img/modelo-cachetero-semi-señorial-juvenil.png" alt="SEMI SEÑORIAL JUVEVIL" />
-          <h3>SEMI SEÑORIAL JUVEVIL</h3>
+          <h3>SEMI HILO SEÑORIAL JUVEVIL</h3>
           <p>S/69.00</p>
         </a>
-        <a class="product" href="pages/producto-detalle.html?id=10">
+        <a class="product" href="pages/producto-detalle.html?id=1027">
           <img src="assets/img/modelo-cachetero-corazon.png" alt="CACHETERO CORAZON" />
           <h3>CACHETERO CORAZON</h3>
           <p>S/63.00</p>
         </a>
-        <a class="product" href="pages/producto-detalle.html?id=2">
+        <a class="product" href="pages/producto-detalle.html?id=1024">
           <img src="assets/img/modelo-bikini-blonda.png" alt="BIKINI BLONDA" />
           <h3>BIKINI BLONDA</h3>
           <p>S/58.00</p>
         </a>
-        <a class="product" href="pages/producto-detalle.html?id=17">
+        <a class="product" href="pages/producto-detalle.html?id=1032">
           <img src="assets/img/modelo-semi-hilo-pretina-ancha.png" alt="SEMI HILO PRETINA ANCHA" />
           <h3>SEMI HILO PRETINA ANCHA</h3>
           <p>S/59.00</p>
         </a>
-        <a class="product" href="pages/producto-detalle.html?id=1">
+        <a class="product" href="pages/producto-detalle.html?id=1020">
           <img src="assets/img/modelo-bikini-animal-print.png" alt="BIKINI ANIMAL PRINT" />
           <h3>BIKINI ANIMAL PRINT</h3>
           <p>S/61.00</p>
         </a>
       </div>
     </section>
+    <!-- Whatsapp flotante -->
+    <div class="whatsapp-float">
+      <a href="https://wa.me/51922886724" target="_blank" class="whatsapp-bubble">
+        <span>¿Necesitas ayuda? Conversemos</span>
+        <div class="whatsapp-button">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+        </div>
+      </a>
+    </div>
   </main>
 
   <!-- Footer Section -->
@@ -167,9 +184,9 @@
         <!-- Info cliente -->
         <h3>SERVICIO AL CLIENTE</h3>
         <ul>
-          <li><a href="pages/contacto.html">Contactanos</a></li>
+          <li><a href="/pages/contacto.html">Contactanos</a></li>
           <li><a href="">Distribuidores</a></li>
-          <li><a href="pages/marbelover.html">Sé una Marvelover</a></li>
+          <li><a href="/pages/marbelover.html">Sé una Marvelover</a></li>
           <li><a href="">Orden de pedido por whatsapp</a></li>
         </ul>
         <!-- Redes sociales -->
@@ -177,15 +194,13 @@
           <a class="social-btn" href="https://www.facebook.com/share/16LxCFavzs/" target="_blank">
             <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" />
           </a>
-          <a class="social-btn" href="https://www.instagram.com/marbellin_lenceria?igsh=bXdpdHNvNHl6bXRz"
-            target="_blank">
+          <a class="social-btn" href="https://www.instagram.com/marbellin_lenceria" target="_blank">
             <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" />
           </a>
-          <a class="social-btn" href="https://www.tiktok.com/@maribellin.lenceria?_t=ZM-8vpuwk9PZf3&_r=1"
-            target="_blank">
+          <a class="social-btn" href="https://www.tiktok.com/@maribellin.lenceria" target="_blank">
             <img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" alt="TikTok" />
           </a>
-          <a class="social-btn" href="https://youtube.com/@lenceria_de_dama_2024?si=0Yfu0BQp2LAiUYvG" target="_blank">
+          <a class="social-btn" href="https://youtube.com/@lenceria_de_dama_2024" target="_blank">
             <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
           </a>
         </div>
@@ -194,21 +209,26 @@
       <div class="column">
         <h3>CUENTA</h3>
         <ul>
-          <li><a href="pages/login.html">Crear cuenta</a></li>
+          <li><a href="/pages/login.html">Crear cuenta</a></li>
           <li>
-            <a href="">
-              <img src="assets/icons/icono-libro-reclamaciones.svg" alt="Icono libro de reclamaciones">
+            <a href="/pages/libro-reclamaciones.html">
+              <img src="/assets/icons/icono-libro-reclamaciones.svg" alt="Libro de reclamaciones">
             </a>
           </li>
         </ul>
         <h3>CORPORACIÓN INNOVITEX MARBELLIN S.A.C</h3>
         <ul>
-          <li>Más que una empresa</li>
+          <li><a href="/pages/nosotros.html">Sobre nosotros</a></li>
+          <li><a href="/pages/terminos.html">Términos y condiciones</a></li>
+          <li><a href="/pages/politica-privacidad.html">Política de privacidad</a></li>
+          <li><a href="/pages/cambios-devoluciones.html">Cambios y devoluciones</a></li>
+          <li><a href="/pages/contacto.html">Contactanos</a></li>
+          </a>
         </ul>
       </div>
       <!-- Info contacto -->
       <div class="column">
-        <h3>TIENDA FÍSICA</h3>
+        <h3>CONTACTO</h3>
         <p>
           Prolongación Huánuco 2010<br>
           Esquina con Av. Isabel La Católica<br>
@@ -227,10 +247,15 @@
     </section>
     <p id="derechos">&copy; 2025 Marbellin Ladies Lingerie. Todos los derechos reservados.</p>
   </footer>
+
+  <!-- Scripts -->
   <script type="module" src="js/cart/main-carrito.js"></script>
   <script type="module" src="js/search/buscador.js"></script>
-
-  <!-- <script type="module" src="js/auth/main-header.js"></script> -->
+  <script type="module" src="js/portadaSlider.js"></script>
+  <script type="module">
+    import { configurarMenuUsuario } from "./js/auth/menuUsuario.js";
+    configurarMenuUsuario();
+  </script>
 </body>
 
 </html>

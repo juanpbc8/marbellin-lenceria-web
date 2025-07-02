@@ -46,9 +46,34 @@
     </div>
   </div>
 
+
+  <!-- Modal de verificación de código -->
+  <div id="codeModal">
+    <div class="modal-contenido">
+      <h3>Verifica tu acceso</h3>
+      <p>Ingresa el código de 6 dígitos enviado a tu correo.</p>
+      <input type="text" id="verificationCode" maxlength="6" placeholder="Código" />
+      <br />
+      <button id="verifyCodeBtn">Verificar</button>
+      <p id="codeError"></p>
+    </div>
+  </div>
+
+
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    emailjs.init("YIAPYpUvkv8UYoSu-"); // Token de EmailJS
+  </script>
+
+  <!-- Otros scripts -->
   <script type="module" src="../js/auth/main-auth.js"></script>
-  <script src="../js/ubicacion-peru.js"></script>
-  <script src="../js/cargar-ubicacion.js"></script>
+  <script type="module" src="../js/cargar-ubicacion.js"></script>
+
 </body>
 
 </html>
