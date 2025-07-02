@@ -1,3 +1,5 @@
+import { ubicacionPeru } from "./ubicacion-peru.js";
+
 document.addEventListener("DOMContentLoaded", () => {
     const departamentoSelect = document.getElementById("departamento");
     const provinciaSelect = document.getElementById("provincia");

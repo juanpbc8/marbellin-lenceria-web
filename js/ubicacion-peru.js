@@ -1,4 +1,4 @@
-const ubicacionPeru = {
+export const ubicacionPeru = {
   "Amazonas": {
     "Chachapoyas": [
       "Chachapoyas",

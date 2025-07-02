@@ -59,7 +59,12 @@ export const productos = [
         id: 1029,
         nombre: "Cachetero Blonda",
         precio: 64.00,
-        imagen: "../assets/img/cachetero-blonda.jpg",
+        imagen: "../assets/img/cachetero-blonda-2.jpg",
+        // imagenes: [
+        //     "../assets/img/cachetero-blonda-1.jpg",
+        //     "../assets/img/cachetero-blonda-3.jpg",
+        //     "../assets/img/cachetero-blonda-4.jpg"
+        // ],
         descripcion: "Cachetero clásico de blonda, suave y cómodo para el uso diario.",
         categoria: "cachetero"
     },
@@ -117,7 +122,7 @@ export const productos = [
         precio: 54.00,
         imagen: "../assets/img/semi-hilo-clasico.jpg",
         descripcion: "Diseño clásico de semi hilo, para quienes buscan comodidad y sensualidad.",
-        categoria: "semi hilo"
+        categoria: "semihilo"
     },
     {
         id: 1031,
@@ -125,7 +130,7 @@ export const productos = [
         precio: 55.00,
         imagen: "../assets/img/semi-hilo-dije.jpg",
         descripcion: "Semi hilo decorado con dije, moderno y atractivo para cualquier ocasión.",
-        categoria: "semi hilo"
+        categoria: "semihilo"
     },
     {
         id: 1032,
@@ -133,7 +138,7 @@ export const productos = [
         precio: 59.00,
         imagen: "../assets/img/semi-hilo-pretina-ancha.jpg",
         descripcion: "Semi hilo con pretina ancha que proporciona ajuste ideal y confort.",
-        categoria: "semi hilo"
+        categoria: "semihilo"
     },
     {
         id: 1048,
@@ -141,7 +146,7 @@ export const productos = [
         precio: 73.00,
         imagen: "../assets/img/semi-señorial-juvenil.jpg",
         descripcion: "Estilo que combina elegancia señorial con frescura juvenil.",
-        categoria: "semi hilo"
+        categoria: "semihilo"
     },
     {
         id: 1001,

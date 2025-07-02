@@ -1,5 +1,5 @@
 import { productos } from '../productos.js';
-import { renderResultados } from './render-resultados.js';
+import { renderResultados, ocultarResultados } from './render-resultados.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const inputBusqueda = document.querySelector('.buscador input');
@@ -14,6 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ocultar resultados al perder foco si se desea
     inputBusqueda.addEventListener('blur', () => {
-        setTimeout(() => renderResultados([]), 200); // Se da tiempo si se hace clic en resultado
+        setTimeout(() => ocultarResultados(), 90); // Se da tiempo si se hace clic en resultado
     });
 });

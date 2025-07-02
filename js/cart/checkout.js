@@ -22,11 +22,11 @@ function renderizarCheckout() {
 
         const fila = document.createElement("tr");
         fila.innerHTML = `
-      <td>${producto.nombre}</td>
-      <td>${producto.cantidad}</td>
-      <td>S/.${producto.precio.toFixed(2)}</td>
-      <td>S/.${subtotal.toFixed(2)}</td>
-    `;
+            <td>${producto.nombre}</td>
+            <td>${producto.cantidad}</td>
+            <td>S/.${producto.precio.toFixed(2)}</td>
+            <td>S/.${subtotal.toFixed(2)}</td>
+            `;
         tbody.appendChild(fila);
     });
 

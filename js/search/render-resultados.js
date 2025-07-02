@@ -21,7 +21,7 @@ export function renderResultados(resultados) {
 
     resultados.forEach(producto => {
         const item = document.createElement('a');
-        item.href = `pages/producto-detalle.html?id=${producto.id}`;
+        item.href = `/pages/producto-detalle.html?id=${producto.id}`;
         item.classList.add('item-busqueda');
         item.innerHTML = `
             <img src="${producto.imagen}" alt="${producto.nombre}" />
@@ -33,4 +33,11 @@ export function renderResultados(resultados) {
     });
 
     contenedor.classList.remove('oculto');
+}
+
+export function ocultarResultados() {
+    const contenedor = document.querySelector('.resultados-busqueda');
+    if (contenedor) {
+        contenedor.classList.add('oculto');
+    }
 }
