@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Productos - Marbellin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff0f5;
+      color: #333;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #cc3399;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    #productos-dinamicos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .producto {
+      border: 1px solid #ccc;
+      padding: 15px;
+      width: 180px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(204,51,153,0.2);
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+      background-color: white;
+    }
+    .producto:hover {
+      box-shadow: 0 4px 12px rgba(204,51,153,0.4);
+    }
+    .producto img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .producto h3 {
+      font-size: 1.1em;
+      margin: 8px 0 6px 0;
+      color: #cc3399;
+    }
+    .producto p {
+      font-weight: bold;
+      color: #666;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>Productos disponibles</h2>
+  <div id="productos-dinamicos"></div>
+
+  <script>
+    function mostrarProductosDinamicos() {
+      const contenedor = document.getElementById('productos-dinamicos');
+      contenedor.innerHTML = '';
+
+      const productos = JSON.parse(localStorage.getItem('productoadmin')) || [];
+
+      productos.forEach((producto) => {
+        const div = document.createElement('div');
+        div.classList.add('producto');
+
+        const imgSrc = producto.imagenes && producto.imagenes.length > 0 ? producto.imagenes[0] : '';
+
+        div.innerHTML = `
+          <img src="${imgSrc}" alt="${producto.nombre}" />
+          <h3>${producto.nombre}</h3>
+          <p>S/. ${producto.precio.toFixed(2)}</p>
+        `;
+
+        div.addEventListener('click', () => {
+          localStorage.setItem('productoSeleccionado', JSON.stringify(producto));
+          window.location.href = 'carrito.html';
+        });
+
+        contenedor.appendChild(div);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', mostrarProductosDinamicos);
+  </script>
+</body>
+</html>

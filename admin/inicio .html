@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inventario Marbellin</title>
+  <link rel="stylesheet" href="css/styleinicio.css" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+  
+</head>
+<body>
+  
+
+  <h1>Inventario Inicial - Marbellin Ladies Lingerie</h1>
+   <div class="tabla-contenedor">
+ <button id="botonExportar" onclick="exportarTablaAPDF()">Exportar a PDF</button>
+   </div>
+    <div class="tabla-contenedor" id="seccionPDF">
+    <table>
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Talla S</th>
+          <th>Talla M</th>
+          <th>Talla L</th>
+          <th>Talla XL</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody id="tablaProductos">
+        <!-- Filas generadas por JavaScript -->
+      </tbody>
+    </table>
+    <p id="mensajeVacio"></p>
+  </div>
+
+ <div class="formulario-contenedor">
+    <h2>Agregar Nuevo Producto</h2>
+    <form id="formularioProducto">
+      <input type="text" placeholder="ID" id="id" required />
+      <input type="text" placeholder="Nombre del producto" id="nombre" required />
+      <input type="number" placeholder="Talla S" id="s" value="0" min="0" required />
+      <input type="number" placeholder="Talla M" id="m" value="0" min="0" required />
+      <input type="number" placeholder="Talla L" id="l" value="0" min="0" required />
+      <input type="number" placeholder="Talla XL" id="xl" value="0" min="0" required />
+      <input type="number" placeholder="Precio (S/)" id="precio" min="0" step="1" required />
+
+      <label class="custom-file-input" id="labelImagen">
+        Seleccionar Imagen
+        <input type="file" accept="image/*" id="imagen" required />
+      </label>
+
+      <button type="submit">Agregar Producto</button>
+    </form>
+  </div>
+  
+ <div class="formulario-cantidad-agregar">
+  <h2>Agregar Cantidad a Producto</h2>
+  <form id="formularioAgregarCantidad" class="form-horizontal">
+    <div class="grupo-campo">
+      <label for="idAgregar">ID:</label>
+      <input type="number" id="idAgregar" required />
+    </div>
+    <div class="grupo-campo">
+      <label for="tallaAgregar">Talla:</label>
+      <select id="tallaAgregar" required>
+        <option value="">Seleccione</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+      </select>
+    </div>
+    <div class="grupo-campo">
+      <label for="cantidadAgregar">Cantidad:</label>
+      <input type="number" id="cantidadAgregar" required />
+    </div>
+    
+      <button type="submit" class="btn btn-success">
+        <i class="fas fa-plus"></i> Agregar
+      </button>
+    
+  </form>
+</div>
+  
+  <div class="formulario-cantidad-eliminar">
+  <h2>Eliminar Cantidad de Producto</h2>
+  <form id="formularioEliminarCantidad" class="form-horizontal">
+    <div class="grupo-campo">
+      <label for="idEliminar">ID:</label>
+      <input type="number" id="idEliminar" required />
+    </div>
+    <div class="grupo-campo">
+      <label for="tallaEliminar">Talla:</label>
+      <select id="tallaEliminar" required>
+        <option value="">Seleccione</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+      </select>
+    </div>
+    <div class="grupo-campo">
+      <label for="cantidadEliminar">Cantidad:</label>
+      <input type="number" id="cantidadEliminar" required />
+    </div>
+
+      <button type="submit" class="btn btn-danger">
+        <i class="fas fa-minus"></i> Eliminar
+      </button>
+  </form>
+</div>
+  
+  <div class="formulario-editar-producto">
+  <h2>Editar Producto</h2>
+  <form id="formularioEditarProducto" class="form-horizontal">
+    <div class="grupo-campo">
+      <label for="idEditar">ID del producto:</label>
+      <input type="text" id="idEditar" required />
+    </div>
+    <div class="grupo-campo">
+      <label for="nombreEditar">Nuevo nombre:</label>
+      <input type="text" id="nombreEditar" />
+    </div>
+    <div class="grupo-campo">
+      <label for="sEditar">Talla S:</label>
+      <input type="number" id="sEditar" min="0" />
+    </div>
+    <div class="grupo-campo">
+      <label for="mEditar">Talla M:</label>
+      <input type="number" id="mEditar" min="0" />
+    </div>
+    <div class="grupo-campo">
+      <label for="lEditar">Talla L:</label>
+      <input type="number" id="lEditar" min="0" />
+    </div>
+    <div class="grupo-campo">
+      <label for="xlEditar">Talla XL:</label>
+      <input type="number" id="xlEditar" min="0" />
+    </div>
+    <div class="grupo-campo">
+      <label for="precioEditar">Nuevo precio:</label>
+      <input type="number" id="precioEditar" min="0" step="1" />
+    </div>
+    <button type="submit" class="btn btn-warning">Guardar Cambios</button>
+  </form>
+</div>
+  
+  <div class="contenedorEliminarProducto" id="contenedorEliminarProducto">
+    <h3>Eliminar producto por ID</h3>
+    <form id="formularioEliminarProducto">
+      <input type="text" id="idEliminar_Producto" placeholder="ID del producto a eliminar" required />
+      <button type="submit" class="btn btn-eliminar">Eliminar producto</button>
+    </form>
+  </div>
+  
+<script src="js/jsinicioadmin.js"></script>
+  
+</body>
+</html>

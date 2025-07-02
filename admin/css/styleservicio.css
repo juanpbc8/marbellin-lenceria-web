@@ -1,0 +1,192 @@
+/* Sección de información general */  
+.info-section {  
+    display: flex;  
+    justify-content: center;  
+    gap: 2rem;  
+    flex-wrap: wrap;  
+    background: #ffffff;  
+    border-radius: 0px;  
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);  
+    padding: 2rem;  
+    max-width: 1200px;  
+    margin: 0 auto;  
+    text-align: center;  
+  }  
+  
+  /* Columnas */  
+  .info-column {  
+    max-width: 300px;  
+    flex: 1 1 300px;  
+    display: flex;  
+    flex-direction: column;  
+    align-items: center;  
+  }  
+  
+  .info-column h3 {  
+    font-size: 1.3rem;  
+    color: #d63384;  
+    margin-bottom: 1rem;  
+    text-transform: uppercase;  
+    border-bottom: 2px solid #d63384;  
+    padding-bottom: 0.5rem;  
+    width: 100%;  
+  }  
+  
+  .info-column ul {  
+    list-style: none;  
+    margin-bottom: 1.5rem;  
+    padding: 0;  
+  }  
+  
+  .info-column ul li {  
+    margin-bottom: 0.8rem;  
+  }  
+  
+  .info-column a {  
+    text-decoration: none;  
+    color: #444;  
+    transition: all 0.3s ease;  
+  }  
+  
+  .info-column a:hover {  
+    color: #d63384;  
+    font-weight: bold;  
+  }  
+  
+  .info-column p {  
+    margin-bottom: 1rem;  
+  }
+  
+  /* Video dentro de columna */
+  .info-column video {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    object-fit: cover;
+    margin-top: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  /* Redes sociales */  
+  .social-buttons {  
+    display: flex;  
+    justify-content: center;  
+    gap: 0.8rem;  
+    margin-top: 1rem;  
+    flex-wrap: wrap;  
+  }  
+  
+  .social-btn img {  
+    width: 32px;  
+    height: 32px;  
+    transition: transform 0.3s ease;  
+  }  
+  
+  .social-btn:hover img {  
+    transform: scale(1.2);  
+  }  
+  
+  /* Mapa */  
+  .map-container {  
+    margin-top: 1rem;  
+    border-radius: 8px;  
+    overflow: hidden;  
+    width: 100%;  
+    display: flex;  
+    justify-content: center;  
+  }  
+  
+  .map-frame {  
+    width: 100%;  
+    max-width: 300px;  
+    height: 200px;  
+    border: none;  
+  }  
+  
+/* WhatsApp flotante */
+.whatsapp-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1000;
+  }
+  
+  .whatsapp-bubble {
+    background-color: #25d366;  /* Verde claro como color inicial */
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center; /* Alinea el texto y el icono */
+    gap: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .whatsapp-bubble:hover {
+    background-color: #25d366;  /* Verde más oscuro en hover */
+    transform: scale(1.1); /* Agranda el botón al pasar el mouse */
+    opacity: 0.9;  /* Agrega un efecto de opacidad en hover */
+  }
+  
+  .whatsapp-button img {
+    width: 24px;  /* Tamaño pequeño para el icono */
+    height: 24px;
+  }
+  
+  /* Cambiar el orden del icono para que vaya a la derecha */
+  .whatsapp-bubble span {
+    order: 1; /* Hace que el texto esté antes */
+  }
+  
+  .whatsapp-bubble .whatsapp-button {
+    order: 2; /* Hace que el icono esté después */
+  }
+  
+  /* Efecto al pasar el mouse sobre el icono */
+  .whatsapp-float:hover .whatsapp-button img {
+    transform: scale(1.1); /* Efecto de escala en el icono */
+    transition: transform 0.3s ease;
+  }
+
+  /* Responsive */  
+  @media (max-width: 768px) {  
+    .info-section {  
+      flex-direction: column;  
+      align-items: center;  
+    }  
+  
+    .info-column {  
+      max-width: 100%;  
+    }  
+  
+    .map-frame {  
+      max-width: 100%;  
+    }
+  
+    .whatsapp-bubble {  
+      display: none;  
+    }
+  
+    .info-column video {
+      display: none;
+    }
+  }
+  
+  /* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #f8bbd0;
+  color: #880e4f;
+  margin-top: 40px;
+  border-top: 2px solid #e91e63;
+  font-weight: bold;
+}

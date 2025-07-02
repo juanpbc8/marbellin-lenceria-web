@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Administrador</title>
+  <link rel="shortcut icon" href="imagenes/icono.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="css/stylelogin-admin.css" />
+  <script> emailjs.init('YIAPYpUvkv8UYoSu-');</script>
+  <link rel="stylesheet" href="css/stylecabeceraproducto.css" />
+  <link rel="stylesheet" href="css/stylemodal.css" />
+  <link rel="stylesheet" href="css/styleheader.css" />
+  <script src="js/jsheader.js"></script>
+  <script src="js/jsmaun.js"></script>
+
+</head>
+
+<body>
+  <header>
+    <div class="contenedor">
+
+      <nav class="barra-nav">
+        <div class="fila fila-superior">
+          <div class="logo">
+            <a href="/index.html"><img id="logo" src="imagenes/Logo.png" alt="Logo de Marbellin" /></a>
+          </div>
+
+          <div class="buscador">
+            <input type="text" id="inputBusqueda" placeholder="Buscar producto..." autocomplete="off"
+              oninput="mostrarSugerencias()" />
+            <button class="boton-buscar" onclick="redirigirBusqueda()" aria-label="Buscar">
+              <i class="fas fa-search"></i>
+            </button>
+            <div id="sugerencias" class="sugerencias"></div>
+          </div>
+
+          <div class="iconos">
+            <div id="carrito-icono" onclick="abrirModal()" aria-label="Carrito">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+
+            <div id="bienvenida">
+              <div id="usuario-icono">
+                <i class="fas fa-user-circle"></i>
+              </div>
+              <div id="menu-usuario">
+                <!-- El contenido del menú se actualizará con JavaScript -->
+              </div>
+            </div>
+
+
+            <button class="menu-btn" onclick="document.querySelector('.menu-nav').classList.toggle('menu-activo')"
+              aria-label="Menú">
+              <span class="menu-icon">☰</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="fila fila-inferior">
+          <ul class="menu-nav">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="producto-menu">
+              <div class="producto-titulo" onclick="toggleOpciones()">
+                <a href="producto.html">Productos</a>
+                <label>▾</label>
+              </div>
+              <div id="opcionesProducto" class="opciones-producto">
+                <a href="producto.html?categoria=todos"><button>Todos</button></a>
+                <a href="producto.html?categoria=cachetero"><button>Cachetero</button></a>
+                <a href="producto.html?categoria=bikini"><button>Bikini</button></a>
+                <a href="producto.html?categoria=semi-hilo"><button>Semi Hilo</button></a>
+                <a href="producto.html?categoria=topsito"><button>Topsito</button></a>
+              </div>
+            </li>
+            <li><a href="masqueunaempresa.html">Sobre nosotros</a></li>
+            <li><a href="contactanos.html">Contáctanos</a></li>
+            <li><a href="marvelover.html">Sé una Marvelover</a></li>
+            <li><a href="https://surl.lu/htktvd">Nuestro Catálogo</a></li>
+          </ul>
+        </div>
+
+      </nav>
+    </div>
+  </header>
+
+  <!-- Modal del carrito -->
+  <div id="modalCarrito" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" onclick="cerrarModal()">&times;</span>
+      <h2>Productos en el carrito</h2>
+      <div id="contenidoCarrito"></div>
+      <p id="subtotalProductos" class="subtotal-productos"></p>
+
+      <div class="caja-cupon">
+        <label for="cupon">Cupón:</label>
+        <input type="text" id="cupon" placeholder="Ingrese cupón">
+        <button class="boton" onclick="aplicarCupon()">Aplicar</button>
+      </div>
+
+      <!-- Resumen del carrito simplificado -->
+      <div class="resumen-carrito">
+        <h3>Resumen del carrito</h3>
+        <p id="Subtotal"></p>
+        <p id="totalFinal" class="total-final"></p>
+      </div>
+
+      <div class="botones-carrito">
+        <button class="boton" onclick="actualizarCarrito()">Actualizar compra</button>
+        <button class="boton" onclick="finalizarCompra()">Finalizar compra</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="contenedor-formularios" class="login-container">
+
+    <!-- Formulario de Inicio de Sesión para Clientes -->
+    <section id="form-login">
+      <h2>Iniciar sesión</h2>
+      <form id="cliente-login-form">
+        <label for="login-email">Correo electrónico:</label>
+        <input type="email" id="login-email" placeholder="Correo electrónico" required />
+
+        <label for="login-pass">Contraseña:</label>
+        <input type="password" id="login-pass" placeholder="Contraseña" required />
+
+        <label><input type="checkbox" id="recordarme" /> Recuérdame</label>
+
+        <button type="submit">Acceder</button>
+        <p><a href="#" id="olvidar-pass">¿Olvidaste la contraseña?</a></p>
+        <p><a href="#" id="actualizar-datos-link">¿Quieres actualizar tus datos?</a></p>
+      </form>
+    </section>
+
+    <!-- Formulario de Registro para Clientes -->
+    <section id="form-registro">
+      <h2>Registrarse</h2>
+      <form id="cliente-registro-form">
+
+        <label for="reg-dni">DNI:</label>
+        <input type="text" id="reg-dni" placeholder="Número de DNI" maxlength="8" required />
+
+        <label for="reg-nombre">Nombres y apellidos:</label>
+        <input type="text" id="reg-nombre" placeholder="Nombres y apellidos" required />
+
+        <label for="reg-direccion">Dirección completa:</label>
+        <input type="text" id="reg-direccion" placeholder="Calle, número, urbanización, distrito" required />
+
+        <label for="reg-region">Región / Provincia:</label>
+        <select id="reg-region" required>
+          <option value="">Seleccione una región</option>
+          <option value="Amazonas">Amazonas</option>
+          <option value="Áncash">Áncash</option>
+          <option value="Apurímac">Apurímac</option>
+          <option value="Arequipa">Arequipa</option>
+          <option value="Ayacucho">Ayacucho</option>
+          <option value="Cajamarca">Cajamarca</option>
+          <option value="Callao">Callao</option>
+          <option value="Cusco">Cusco</option>
+          <option value="Huancavelica">Huancavelica</option>
+          <option value="Huánuco">Huánuco</option>
+          <option value="Ica">Ica</option>
+          <option value="Junín">Junín</option>
+          <option value="La Libertad">La Libertad</option>
+          <option value="Lambayeque">Lambayeque</option>
+          <option value="Lima">Lima</option>
+          <option value="Loreto">Loreto</option>
+          <option value="Madre de Dios">Madre de Dios</option>
+          <option value="Moquegua">Moquegua</option>
+          <option value="Pasco">Pasco</option>
+          <option value="Piura">Piura</option>
+          <option value="Puno">Puno</option>
+          <option value="San Martín">San Martín</option>
+          <option value="Tacna">Tacna</option>
+          <option value="Tumbes">Tumbes</option>
+          <option value="Ucayali">Ucayali</option>
+        </select>
+
+        <label for="reg-telefono">Teléfono:</label>
+        <input type="text" id="reg-telefono" placeholder="Número de teléfono" required />
+
+        <label for="reg-email">Correo electrónico:</label>
+        <input type="email" id="reg-email" placeholder="Correo electrónico" required />
+
+        <label for="reg-pass">Contraseña:</label>
+        <input type="password" id="reg-pass" placeholder="Contraseña" required />
+
+        <button type="submit">Registrarse</button>
+      </form>
+    </section>
+
+    <!-- Botón de volver dentro del formulario de registro -->
+    <div class="volver-container">
+      <button onclick="window.history.back()" class="btn-volver" type="button">
+        <i class="fas fa-arrow-left"></i> Volver
+      </button>
+    </div>
+    </form>
+    </section>
+
+    <!-- Formulario de recuperación -->
+    <section id="recuperar-clave" style="display: none">
+      <h3>Restablecer contraseña</h3>
+      <form id="form-recuperar">
+        <input type="email" id="rec-email" placeholder="Tu correo registrado" required /><br />
+        <input type="password" id="rec-nueva-pass" placeholder="Nueva contraseña" required /><br />
+        <button type="submit">Actualizar contraseña</button>
+        <button type="button" id="cancelar-recuperar" class="btn-volver">Cancelar</button>
+      </form>
+    </section>
+
+    <!-- Formulario de actualización -->
+    <section id="actualizar-datos" style="display: none">
+      <h3>Actualizar mis datos</h3>
+      <form id="form-actualizar-datos">
+        <input type="email" id="upd-email" placeholder="Correo registrado" required /><br />
+        <input type="text" id="upd-nombre" placeholder="Nuevo nombre" required /><br />
+        <input type="text" id="upd-direccion" placeholder="Nueva dirección" required /><br />
+        <input type="text" id="upd-telefono" placeholder="Nuevo teléfono" required /><br />
+        <button type="submit">Guardar cambios</button>
+        <button type="button" id="cancelar-actualizar" class="btn-volver">Cancelar</button>
+      </form>
+    </section>
+
+    <!-- Formulario de Inicio de Sesión para Administrador (oculto) -->
+
+    <div class="login-container" id="admin-form" style="display: none;">
+      <h2>Iniciar Sesión</h2>
+      <form id="loginForm">
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" required>
+
+        <label for="dni">DNI:</label>
+        <input type="number" id="dni" required minlength="8" maxlength="8">
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" required>
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" required>
+
+        <button type="submit">Entrar</button>
+      </form>
+      <p id="loginError" class="error-message"></p>
+      <div id="loginSuccess" class="success-message" style="display: none;"></div>
+    </div>
+
+    <div id="codeModal" class="code-modal">
+      <div class="code-modal-content">
+        <h3>Ingrese el código de 6 dígitos:</h3>
+        <input type="text" id="verificationCode" maxlength="6" placeholder="Código de 6 dígitos">
+        <button id="verifyCodeBtn">Verificar</button>
+        <p id="codeError" class="error-message" style="display: none;"></p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/jsocultar.js"></script>
+  <script src="js/jsmain.js"></script>
+  <script src="js/jslogin-admin.js"> </script>
+</body>
+
+</html>

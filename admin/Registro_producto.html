@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel Marbellin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="css/administrador .css" />
+  <link rel="stylesheet" href="css/styleadmin-cupon.css" />
+  <link rel="stylesheet" href="css/styleadmin-pedido.css" />
+  <link rel="stylesheet" href="css/styleadmin-cliente.css" />
+</head>
+
+<body>
+
+  <!-- Botón menú hamburguesa -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Menú lateral">
+    <div class="sidebar-header">
+      <div class="sidebar-title">
+        <span class="material-icons" aria-hidden="true">dashboard</span>
+        Marbellín
+      </div>
+      <button class="close-btn" id="closeBtn" aria-label="Cerrar menú">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M15 18 L9 12 L15 6" />
+        </svg>
+      </button>
+    </div>
+    <a href="#" onclick="mostrarPanel('inicio')"><span class="material-icons">home</span> Inicio</a>
+    <a href="Panelproducto/admin.html"><span class="material-icons">category</span> Productos</a>
+    <a href="#" onclick="mostrarPanel('cupones')"><span class="material-icons">local_offer</span> Cupones</a>
+    <a href="#" onclick="mostrarPanel('pedidos')"><span class="material-icons">shopping_cart</span> Pedidos</a>
+    <a href="#" onclick="mostrarPanel('cliente')"><span class="material-icons">people</span> Clientes</a>
+    <a href="#"><span class="material-icons">bar_chart</span> Estadísticas</a>
+    <a href="#"><span class="material-icons">settings</span> Configuración</a>
+  </aside>
+
+  <header>
+    <a href="/index.html"><img id="logo" src="imagenes/Logo.png" alt="Logo Marbellín" /></a>
+  </header>
+
+  <main id="mainContent">
+    <!-- Panel Inicio -->
+    <div id="panelInicio" class="dashboard-panel">
+      <div class="dashboard-header">
+        <h2>Panel de Administración</h2>
+        <p>Administra la tienda <strong>Marbellin</strong> de forma profesional.</p>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <span class="material-icons">inventory_2</span>
+          <h3>Productos</h3>
+          <p>Administra tu catálogo de ropa interior.</p>
+          <button><a href="Panelproducto/admin.html" style="text-decoration: none; color: inherit;">Ver</a></button>
+        </div>
+
+        <div class="dashboard-card">
+          <span class="material-icons">shopping_cart</span>
+          <h3>Pedidos</h3>
+          <p>Gestiona ventas y entregas.</p>
+          <button onclick="mostrarPanel('pedidos')">Ver</button>
+        </div>
+
+        <div class="dashboard-card">
+          <span class="material-icons">bar_chart</span>
+          <h3>Estadísticas</h3>
+          <p>Analiza el rendimiento.</p>
+          <button onclick="mostrarPanel('estadisticas')">Ver</button>
+        </div>
+
+        <div class="dashboard-card">
+          <span class="material-icons">local_offer</span>
+          <h3>Cupones</h3>
+          <p>Crea descuentos atractivos.</p>
+          <button onclick="mostrarPanel('cupones')">Ver</button>
+        </div>
+
+        <div class="dashboard-card">
+          <span class="material-icons">group</span>
+          <h3>Usuarios</h3>
+          <p>Controla clientes y accesos.</p>
+          <button onclick="mostrarPanel('cliente')">Ver</button>
+        </div>
+
+        <div class="dashboard-card">
+          <span class="material-icons">settings</span>
+          <h3>Configuración</h3>
+          <p>Ajusta parámetros de la tienda.</p>
+          <button onclick="mostrarPanel('configuracion')">Ver</button>
+        </div>
+
+        <div class="dashboard-card">
+          <span class="material-icons">chat</span>
+          <h3>Mensajes</h3>
+          <p>Revisa consultas de clientes.</p>
+          <button onclick="mostrarPanel('mensajes')">Ver</button>
+        </div>
+
+        <div class="dashboard-card">
+          <span class="material-icons">star_rate</span>
+          <h3>Reseñas</h3>
+          <p>Monitorea la opinión del cliente.</p>
+          <button onclick="mostrarPanel('resenas')">Ver</button>
+        </div>
+
+        <div class="dashboard-card">
+          <span class="material-icons">photo_library</span>
+          <h3>Galería</h3>
+          <p>Gestiona imágenes de productos y banners.</p>
+          <button onclick="mostrarPanel('ofertas')">Ver</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel Producto -->
+    <div id="panelProductos" class="marbellin-panel" style="display: none;">
+      <h1>Inventario Inicial - Marbellin Ladies Lingerie</h1>
+
+      <div class="tabla-contenedor">
+        <button id="botonExportar" onclick="exportarTablaAPDF()">Exportar a PDF</button>
+      </div>
+
+      <div class="tabla-contenedor" id="seccionPDF">
+        <table>
+          <thead>
+            <tr>
+              <th>Imagen</th>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Talla S</th>
+              <th>Talla M</th>
+              <th>Talla L</th>
+              <th>Talla XL</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody id="tablaProductos">
+            <!-- Filas generadas por JavaScript -->
+          </tbody>
+        </table>
+        <p id="mensajeVacio"></p>
+      </div>
+
+      <div class="formulario-contenedor">
+        <h2>Agregar Nuevo Producto</h2>
+        <form id="formularioProducto">
+          <input type="text" placeholder="ID" id="id" required />
+          <input type="text" placeholder="Nombre del producto" id="nombre" required />
+          <input type="number" placeholder="Talla S" id="s" value="0" min="0" required />
+          <input type="number" placeholder="Talla M" id="m" value="0" min="0" required />
+          <input type="number" placeholder="Talla L" id="l" value="0" min="0" required />
+          <input type="number" placeholder="Talla XL" id="xl" value="0" min="0" required />
+          <input type="number" placeholder="Precio (S/)" id="precio" min="0" step="1" required />
+
+          <label class="custom-file-input" id="labelImagen">
+            Seleccionar Imagen
+            <input type="file" accept="image/*" id="imagen" required />
+          </label>
+
+          <button type="submit">Agregar Producto</button>
+        </form>
+      </div>
+
+      <div class="formulario-cantidad-agregar">
+        <h2>Agregar Cantidad a Producto</h2>
+        <form id="formularioAgregarCantidad" class="form-horizontal">
+          <div class="grupo-campo">
+            <label for="idAgregar">ID:</label>
+            <input type="number" id="idAgregar" required />
+          </div>
+          <div class="grupo-campo">
+            <label for="tallaAgregar">Talla:</label>
+            <select id="tallaAgregar" required>
+              <option value="">Seleccione</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </div>
+          <div class="grupo-campo">
+            <label for="cantidadAgregar">Cantidad:</label>
+            <input type="number" id="cantidadAgregar" min="1" required />
+          </div>
+          <button type="submit" class="btn btn-success">
+            <i class="fas fa-plus"></i> Agregar
+          </button>
+        </form>
+      </div>
+
+      <div class="formulario-cantidad-eliminar">
+        <h2>Eliminar Cantidad de Producto</h2>
+        <form id="formularioEliminarCantidad" class="form-horizontal">
+          <div class="grupo-campo">
+            <label for="idEliminar">ID:</label>
+            <input type="number" id="idEliminar" required />
+          </div>
+          <div class="grupo-campo">
+            <label for="tallaEliminar">Talla:</label>
+            <select id="tallaEliminar" required>
+              <option value="">Seleccione</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </div>
+          <div class="grupo-campo">
+            <label for="cantidadEliminar">Cantidad:</label>
+            <input type="number" id="cantidadEliminar" min="1" required />
+          </div>
+          <button type="submit" class="btn btn-danger">
+            <i class="fas fa-minus"></i> Eliminar
+          </button>
+        </form>
+      </div>
+
+      <div class="formulario-editar-producto">
+        <h2>Editar Producto</h2>
+        <form id="formularioEditarProducto" class="form-horizontal">
+          <div class="grupo-campo">
+            <label for="idEditar">ID del producto:</label>
+            <input type="text" id="idEditar" required />
+          </div>
+          <div class="grupo-campo">
+            <label for="nombreEditar">Nuevo nombre:</label>
+            <input type="text" id="nombreEditar" />
+          </div>
+          <div class="grupo-campo">
+            <label for="sEditar">Talla S:</label>
+            <input type="number" id="sEditar" min="0" />
+          </div>
+          <div class="grupo-campo">
+            <label for="mEditar">Talla M:</label>
+            <input type="number" id="mEditar" min="0" />
+          </div>
+          <div class="grupo-campo">
+            <label for="lEditar">Talla L:</label>
+            <input type="number" id="lEditar" min="0" />
+          </div>
+          <div class="grupo-campo">
+            <label for="xlEditar">Talla XL:</label>
+            <input type="number" id="xlEditar" min="0" />
+          </div>
+          <div class="grupo-campo">
+            <label for="precioEditar">Nuevo precio:</label>
+            <input type="number" id="precioEditar" min="0" step="1" />
+          </div>
+          <button type="submit" class="btn btn-warning">Guardar Cambios</button>
+        </form>
+      </div>
+
+      <div class="contenedorEliminarProducto" id="contenedorEliminarProducto">
+        <h2>Eliminar producto por ID</h2>
+        <form id="formularioEliminarProducto">
+          <input type="text" id="idEliminar_Producto" placeholder="ID del producto a eliminar" required />
+          <button type="submit" class="btn btn-eliminar">Eliminar producto</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Panel Cupones -->
+    <div id="panelCupones" style="display: none;">
+      <section>
+        <h2>Administración de Cupones</h2>
+
+        <label for="codigoCupon">Código del cupón:</label>
+        <input type="text" id="codigoCupon" placeholder="Ej. MARBELLIN20">
+
+        <label for="tipoCupon">Tipo de descuento:</label>
+        <select id="tipoCupon">
+          <option value="porcentaje">% Descuento</option>
+          <option value="soles">S/ Descuento fijo</option>
+        </select>
+
+        <label for="descuentoCupon">Valor del descuento:</label>
+        <input type="number" id="descuentoCupon" placeholder="Ej. 20" min="1">
+
+        <label for="vencimientoCupon">Fecha de vencimiento:</label>
+        <input type="date" id="vencimientoCupon">
+
+        <button class="crearCupon" onclick="crearCupon()">Crear cupón</button>
+
+        <h3>Buscar cupones</h3>
+        <input type="text" id="buscadorCupon" placeholder="Buscar por código..." oninput="mostrarCupones()">
+
+        <div id="tablaCuponesWrapper">
+          <table id="tablaCupones">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Tipo</th>
+                <th>Valor</th>
+                <th>Vence</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+      </section>
+    </div>
+
+    <!-- Panel Pedidos -->
+    <div id="panelPedidos" style="display: none;">
+      <div class="contenedor-historial-externo">
+        <h2>Historial de Compras</h2>
+        <button id="btn-eliminar-historial" onclick="eliminarHistorial()">Eliminar Historial</button>
+
+        <div class="contenedor-historial" id="historial">
+          <!-- Aquí se cargan dinámicamente las compras -->
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Panel Clientes -->
+    <div id="panelClientes" style="display: none;">
+      <section>
+        <h2>Administración de Clientes</h2>
+
+        <button id="btn-eliminar-historial" onclick="eliminarHistorial()">Eliminar Historial</button>
+
+        <label for="buscadorClientes">Buscar clientes:</label>
+        <input type="text" id="buscadorClientes" placeholder="Buscar por nombre o correo...">
+
+        <div id="tablaClientesWrapper">
+          <table id="tablaClientes">
+            <thead>
+              <tr>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Región</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Aquí se insertan los clientes -->
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+    </div>
+
+  </main>
+
+  <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
+
+
+
+  <!-- Scripts -->
+  <script src="js/jsadmin-panel.js"></script>
+  <script src="js/jsinicioadmin.js"></script>
+  <script src="js/jsadmin-cupon.js"></script>
+  <script src="js/jsadmin-pedido.js"></script>
+  <script src="js/jsadmin-cliente.js"></script>
+  <script>
+    // --- Cerrar sesión ---
+    function cerrarSesion() {
+      sessionStorage.clear();
+      window.location.href = "Login-Administrador.html";
+    }
+  </script>
+</body>
+
+</html>

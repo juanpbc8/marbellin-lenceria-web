@@ -1,0 +1,143 @@
+#panelProductos {
+  background: #fff0f5;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(214, 112, 162, 0.3);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+#panelProductos h1, #panelProductos h2, #panelProductos h3 {
+  color: #c71585;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Tabla */
+.tabla-contenedor {
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+table th, table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #f0cce1;
+}
+
+table thead {
+  background-color: #ffc0cb;
+  color: #600030;
+  font-weight: bold;
+}
+
+#mensajeVacio {
+  text-align: center;
+  color: #ff69b4;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* Formularios */
+form {
+  background: #ffe4e1;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 8px rgba(255, 192, 203, 0.3);
+}
+
+form input, form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+form label {
+  font-weight: bold;
+  color: #b03060;
+}
+
+button {
+  background-color: #db7093;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #c06080;
+}
+
+/* Botones específicos */
+#botonExportar {
+  float: right;
+  margin-bottom: 10px;
+  background-color: #ff69b4;
+}
+
+.btn-success {
+  background-color: #32cd32;
+}
+
+.btn-danger {
+  background-color: #dc143c;
+}
+
+.btn-warning {
+  background-color: #ffa500;
+}
+
+.btn-eliminar {
+  background-color: #b22222;
+}
+
+/* Contenedores de secciones */
+.formulario-contenedor,
+.formulario-cantidad-agregar,
+.formulario-cantidad-eliminar,
+.formulario-editar-producto,
+.contenedorEliminarProducto {
+  margin-top: 30px;
+}
+
+/* Inputs de imagen personalizados */
+.custom-file-input {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  background-color: #f9cce3;
+  color: #a00055;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.custom-file-input input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+

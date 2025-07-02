@@ -1,0 +1,190 @@
+/* Contenedor principal */
+#panelClientes {
+  width: 98%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 35px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+  background-color: #fff0f6;
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Título */
+#panelClientes h2 {
+  color: #d81b60;
+  margin-bottom: 32px;
+  text-shadow: 0 1px 2px rgba(216, 27, 96, 0.3);
+}
+
+/* Label */
+#panelClientes label {
+  margin-bottom: 16px;
+  font-weight: 600;
+  color: #880e4f;
+  align-self: flex-start;
+}
+
+/* Input de búsqueda */
+#panelClientes input[type="text"] {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px 16px;
+  border: 2px solid #d81b60;
+  border-radius: 10px;
+  font-size: 15px;
+  margin-bottom: 40px;
+  box-sizing: border-box;
+}
+
+#panelClientes input[type="text"]:focus {
+  outline: none;
+  border-color: #ec407a;
+  box-shadow: 0 0 5px rgba(236, 64, 122, 0.4);
+}
+
+/* Tabla contenedor */
+#tablaClientesWrapper {
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+/* Tabla */
+#tablaClientes {
+  width: 100%;
+  min-width: 1100px;
+  border-collapse: collapse;
+  table-layout: auto;
+  font-size: 16px;
+}
+
+/* Encabezado */
+#tablaClientes thead {
+  background-color: #ec407a;
+  color: white;
+}
+
+#tablaClientes thead th {
+  padding: 20px 16px;
+  text-align: left;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Filas */
+#tablaClientes tbody tr {
+  background-color: #fff5fa;
+  transition: background-color 0.3s;
+}
+
+#tablaClientes tbody tr:hover {
+  background-color: #ffe0f0;
+}
+
+/* Celdas */
+#tablaClientes td {
+  padding: 20px 18px;
+  color: #880e4f;
+  border-bottom: 1px solid #f3c1d8;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: left;
+}
+
+/* Última columna centrada */
+#tablaClientes td:last-child {
+  text-align: center;
+}
+
+/* Botones de acciones */
+#tablaClientes button {
+  margin: 2px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  background-color: #d81b60;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#tablaClientes button:hover {
+  background-color: #ad1457;
+}
+
+/* Botones generales: volver y eliminar historial */
+.btn-volver,
+#btn-eliminar-historial {
+  background: linear-gradient(45deg, #ec407a, #c2185b);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 40px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(194, 24, 91, 0.5);
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.btn-volver:hover,
+#btn-eliminar-historial:hover {
+  background: linear-gradient(45deg, #c2185b, #880e4f);
+  transform: scale(1.02);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  #panelClientes {
+    padding: 25px 15px;
+  }
+
+  #panelClientes h2 {
+    margin-bottom: 24px;
+  }
+
+  #panelClientes label {
+    margin-bottom: 16px;
+  }
+
+  #panelClientes input[type="text"] {
+    margin-bottom: 32px;
+  }
+
+  #tablaClientesWrapper {
+    margin-bottom: 40px;
+  }
+
+  #tablaClientes {
+    min-width: 700px;
+    font-size: 16px;
+  }
+
+  #tablaClientes thead th,
+  #tablaClientes td {
+    padding: 20px 18px;
+  }
+
+  .btn-volver,
+  #btn-eliminar-historial {
+    max-width: 100%;
+    margin-bottom: 32px;
+  }
+}

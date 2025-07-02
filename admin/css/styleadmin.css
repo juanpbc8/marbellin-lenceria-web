@@ -1,0 +1,135 @@
+ :root {
+      --bg-dark: #f4f4f9;
+      --bg-card: #ffffff;
+      --pink: #ff4f9a;
+      --pink-light: #ff8cc4;
+      --text-light: #333;
+      --text-muted: #888;
+      --radius: 12px;
+      --bg-sidebar: #ffffff;
+      --bg-sidebar-hover: #f7f7f7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: var(--bg-sidebar);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      border-right: 1px solid #ddd;
+    }
+
+    .sidebar h2 {
+      color: var(--pink);
+      margin-bottom: 2rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .sidebar a {
+      color: var(--text-light);
+      text-decoration: none;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1rem;
+      transition: 0.3s;
+      padding: 8px 0;
+    }
+
+    .sidebar a:hover {
+      color: var(--pink-light);
+      background-color: var(--bg-sidebar-hover);
+      border-radius: 8px;
+    }
+
+    .sidebar i {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Main content */
+    .main {
+      margin-left: 250px;
+      flex: 1;
+      padding: 2rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      color: var(--pink-light);
+    }
+
+    .header button {
+      background: var(--pink);
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border: none;
+      border-radius: var(--radius);
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: 0 0 15px rgba(255, 79, 154, 0.2);
+      transition: transform 0.2s;
+      border: 1px solid #ddd;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      color: var(--pink-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+      .main {
+        margin-left: 0;
+      }
+    }
+

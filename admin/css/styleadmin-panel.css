@@ -1,0 +1,214 @@
+:root {
+      --rosa: #e91e63;
+      --fondo: #fdf0f5;
+      --texto: #333;
+      --hover: #fce4ec;
+      --shadow: rgba(233, 30, 99, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+
+header {
+position: fixed;
+top: 0;
+right: 0;
+height: 60px;
+background-color: #f8bbd0;
+display: flex;
+align-items: center;
+justify-content: flex-end;
+  width: 100%;
+box-shadow: 0 2px 8px var(--shadow);
+padding-right: 30px;
+z-index: 999;
+border-bottom-left-radius: 12px;
+
+}
+
+
+    #logo {
+      height: 60px;
+      user-select: none;
+      filter: drop-shadow(0 0 1px var(--rosa));
+      margin-left: 12px;
+    }
+
+    /* Botón para abrir menú hamburguesa sin recuadro */
+    .menu-toggle {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 22px;
+      padding: 0;
+    }
+
+    /* Las 3 líneas hamburguesa */
+    .menu-toggle span {
+      display: block;
+      height: 3px;
+      background-color: var(--rosa);
+      border-radius: 3px;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 260px;
+      height: 100vh;
+      background-color: white;
+      box-shadow: 4px 0 16px var(--shadow);
+      padding: 30px 25px;
+      display: flex;
+      flex-direction: column;
+      transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1050;
+      border-top-right-radius: 14px;
+      border-bottom-right-radius: 14px;
+      /* Agregado para que se superponga y no afecte al contenido */
+      /* No cambiaremos el flujo del layout */
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 36px;
+    }
+
+    .sidebar-title {
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--rosa);
+      user-select: none;
+      text-shadow: 0 0 4px rgba(233, 30, 99, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Material icon junto al título */
+    .sidebar-title .material-icons {
+      font-size: 28px;
+      color: var(--rosa);
+    }
+
+    /* Botón cerrar menú con flecha original */
+    .close-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px var(--shadow);
+    }
+
+    .close-btn:hover {
+      background-color: var(--hover);
+      transform: scale(1.15);
+    }
+
+    .close-btn svg {
+      stroke: var(--rosa);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Enlaces menú */
+    .sidebar a {
+      text-decoration: none;
+      color: var(--texto);
+      margin: 14px 0;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 16px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+      box-shadow: inset 0 0 0 transparent;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sidebar a:hover {
+      background-color: var(--hover);
+      color: var(--rosa);
+      box-shadow: inset 3px 0 0 var(--rosa);
+      padding-left: 18px;
+    }
+
+    .material-icons {
+      font-size: 20px;
+      color: var(--rosa);
+    }
+
+    /* Contenido principal */
+    main {
+         text-align: center;
+         padding: 75px 12px 24px 12px;
+         max-width: 100%;
+         margin: 5 auto;
+         user-select: none;
+         
+}
+
+    main h1 {
+      font-size: 32px;
+      margin-bottom: 16px;
+      font-weight: 700;
+      color: var(--rosa);
+      text-shadow: 0 0 5px rgba(233, 30, 99, 0.4);
+    }
+
+    main p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+      color: #666;
+    }
+
+    /* Ocultar botón menú cuando está abierto */
+    .menu-toggle.hide {
+      display: none;
+    }
+
+    /* En escritorio, solo cambiamos el tamaño del botón, no el layout */
+    @media (min-width: 768px) {
+      .menu-toggle {
+        width: 32px;
+        height: 26px;
+        top: 20px;
+        left: 20px;
+      }
+    }

@@ -1,0 +1,46 @@
+
+body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff0f5;
+    }
+
+    .frase-container {
+      width: 100%;
+      overflow: hidden;
+      background-color: #fde6ef;
+      height: 25px;  /* Reducir la altura del contenedor */
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 0 0px;  /* Reducir el padding para un espacio más pequeño */
+    }
+
+    .frase-slider {
+      display: flex;
+      width: max-content;
+      animation: deslizarContinuo 40s linear infinite;
+    }
+
+    .frase-animada {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: #8a004f;
+      background-color: #fbe7ef;
+      padding: 14px 18px;
+      border-radius: 20px;
+      margin-right: 20px;  /* Asegurarse de que haya espacio entre los elementos */
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @keyframes deslizarContinuo {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }

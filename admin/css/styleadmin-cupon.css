@@ -1,0 +1,372 @@
+/* Contenedor principal */
+#panelCupones {
+  width: 98%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 25px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+  background-color: #fff0f6;
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Títulos */
+#panelCupones h2,
+#panelCupones h3 {
+  color: #d81b60;
+  margin-bottom: 14px;
+  width: 100%;
+  text-shadow: 0 1px 2px rgba(216, 27, 96, 0.3);
+}
+
+/* Etiquetas */
+#panelCupones label {
+  display: block;
+  margin: 8px 0 6px;
+  color: #880e4f;
+  font-weight: 700;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Inputs y selects */
+#panelCupones input[type="text"],
+#panelCupones input[type="number"],
+#panelCupones input[type="date"],
+#panelCupones select {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px 14px;
+  border: 1.5px solid #f8bbd0;
+  border-radius: 10px;
+  background-color: #fff;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+#panelCupones input[type="text"]:focus,
+#panelCupones input[type="number"]:focus,
+#panelCupones input[type="date"]:focus,
+#panelCupones select:focus {
+  border-color: #d81b60;
+  outline: none;
+  box-shadow: 0 0 6px rgba(216, 27, 96, 0.5);
+}
+
+/* Botón Crear cupón */
+#panelCupones .crearCupon {
+  background: linear-gradient(45deg, #ec407a, #c2185b);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px 0 30px;
+  box-shadow: 0 4px 10px rgba(194, 24, 91, 0.5);
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+#panelCupones .crearCupon:hover {
+  background: linear-gradient(45deg, #c2185b, #880e4f);
+  transform: scale(1.05);
+}
+
+/* Buscar cupones */
+#panelCupones h3 {
+  margin-top: 12px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+/* Input buscador */
+#panelCupones input#buscadorCupon {
+  margin-bottom: 30px;
+  max-width: 600px;
+  text-align: center;
+  border-color: #f8bbd0;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#panelCupones input#buscadorCupon:focus {
+  border-color: #d81b60;
+  box-shadow: 0 0 6px rgba(216, 27, 96, 0.5);
+  outline: none;
+}
+
+/* Contenedor tabla con scroll horizontal */
+#tablaCuponesWrapper {
+  width: 100%;
+  max-width: 900px;
+  overflow-x: auto;
+  margin-top: 10px;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(216, 27, 96, 0.15);
+  background-color: #fff0f6;
+}
+
+/* Tabla de cupones */
+#tablaCupones {
+  width: 100%;
+  min-width: 700px; /* para activar scroll horizontal si no cabe */
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  font-size: 15px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Encabezados tabla */
+#tablaCupones th {
+  background-color: #d81b60;
+  color: #fff;
+  font-weight: 700;
+  padding: 12px 10px;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+  user-select: none;
+  box-shadow: inset 0 -3px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* Celdas tabla */
+#tablaCupones td {
+  background-color: #fce4ec;
+  padding: 12px 10px;
+  border: none;
+  color: #880e4f;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+/* Filas alternas */
+#tablaCupones tbody tr:nth-child(even) td {
+  background-color: #f8bbd0;
+}
+
+/* Hover filas */
+#tablaCupones tbody tr:hover td {
+  background-color: #ec407a;
+  color: #fff;
+  font-weight: 600;
+  cursor: default;
+}
+
+/* Botones de acción (Editar y Eliminar) */
+#tablaCupones .btnEditar,
+#tablaCupones .btnEliminar {
+  padding: 8px 14px;
+  font-size: 13px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+  user-select: none;
+}
+
+/* Separación entre botones */
+#tablaCupones .btnEditar {
+  margin-right: 12px; /* Más separación entre botones */
+  background-color: #ad1457;
+  box-shadow: 0 4px 8px rgba(173, 20, 87, 0.4);
+}
+
+#tablaCupones .btnEditar:hover {
+  background-color: #880e4f;
+  transform: scale(1.08);
+}
+
+#tablaCupones .btnEliminar {
+  background-color: #e91e63;
+  box-shadow: 0 4px 8px rgba(233, 30, 99, 0.4);
+}
+
+#tablaCupones .btnEliminar:hover {
+  background-color: #b0003a;
+  transform: scale(1.08);
+}
+
+/* Íconos de botones */
+#tablaCupones .btnEditar i,
+#tablaCupones .btnEliminar i {
+  font-size: 16px;
+}
+
+/* Botón volver */
+#panelCupones button[onclick*="mostrarPanel"] {
+  background: linear-gradient(45deg, #ec407a, #c2185b);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 30px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(194, 24, 91, 0.5);
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+}
+
+#panelCupones button[onclick*="mostrarPanel"]:hover {
+  background: linear-gradient(45deg, #c2185b, #880e4f);
+  transform: scale(1.05);
+}
+
+/* Mensajes o alertas centrados */
+#panelCupones .mensajeAlerta {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 14px 18px;
+  background-color: #fce4ec;
+  border: 1.5px solid #f8bbd0;
+  border-radius: 12px;
+  color: #880e4f;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(216, 27, 96, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #panelCupones {
+    padding: 20px 20px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  #panelCupones label,
+  #panelCupones h3 {
+    text-align: center;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  #panelCupones input[type="text"],
+  #panelCupones input[type="number"],
+  #panelCupones input[type="date"],
+  #panelCupones select,
+  #panelCupones .crearCupon,
+  #panelCupones button[onclick*="mostrarPanel"] {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  #tablaCuponesWrapper {
+    max-width: 100%;
+  }
+
+  #tablaCupones {
+    font-size: 14px;
+    min-width: 600px; /* menor mínimo en móvil para scroll horizontal */
+  }
+
+  #tablaCupones th,
+  #tablaCupones td {
+    padding: 10px 8px;
+  }
+
+  /* Ajusta margen de botones en móvil también */
+  #tablaCupones .btnEditar {
+    margin-right: 10px;
+  }
+}
+
+/* Estilo SweetAlert2 - paleta rosada pastel suave */
+
+.swal2-popup {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 14px;
+  border: 2px solid #f48fb1; /* rosa suave */
+  background: #fff5f8; /* fondo blanco rosado muy suave */
+  color: #ad1457; /* rosa oscuro elegante */
+}
+
+.swal2-title {
+  font-weight: 700;
+  font-size: 1.9rem;
+  color: #d81b60; /* rosa fuerte */
+}
+
+.swal2-input {
+  border: 1.5px solid #f8bbd0; /* rosa pastel claro */
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 1.05rem;
+  color: #880e4f; /* rosa oscuro */
+  background: #fff0f6; /* fondo blanco rosado */
+  box-shadow: inset 0 1px 5px rgb(0 0 0 / 0.07);
+  transition: border-color 0.3s ease;
+}
+
+.swal2-input:focus {
+  border-color: #ec407a; /* rosa vivo */
+  outline: none;
+  background: #fff0f6;
+}
+
+.swal2-confirm {
+  background-color: #f06292 !important; /* rosa medio vivo */
+  font-weight: 600;
+  border-radius: 14px;
+  padding: 12px 28px;
+  font-size: 1.15rem;
+  box-shadow: 0 4px 14px rgba(240, 98, 146, 0.6);
+  transition: background-color 0.3s ease;
+  color: #fff !important;
+}
+
+.swal2-confirm:hover {
+  background-color: #ec407a !important; /* rosa intenso */
+}
+
+.swal2-cancel {
+  background-color: #f8bbd0 !important; /* rosa pastel claro */
+  border-radius: 14px;
+  padding: 12px 28px;
+  font-size: 1.15rem;
+  color: #880e4f !important; /* rosa oscuro */
+  box-shadow: 0 3px 10px rgba(248, 187, 208, 0.7);
+  transition: background-color 0.3s ease;
+}
+
+.swal2-cancel:hover {
+  background-color: #f06292 !important; /* rosa medio */
+  color: #fff !important;
+}

@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marbellin Lenceria Fina</title>
+    <link rel="shortcut icon" href="imagenes/icono.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/header.css" />
+  <script src="js/header.js"></script>
+  <script src="js/maun.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/stylecabeceraproducto.css" />
+    <link rel="stylesheet" href="css/stylemodalcarrito.css" />
+    <link rel="stylesheet" href="css/stylepedido.css" />
+    <script src="js/jscarritosegundario.js"></script>
+  </head>
+
+  <body>
+     <header>
+    <div class="contenedor">
+
+      <nav class="barra-nav">
+        <div class="fila fila-superior">
+          <div class="logo">
+            <img id="logo" src="imagenes/Logo.png" alt="Logo de Marbellin" />
+          </div>
+
+          <div class="buscador">
+            <input type="text" id="inputBusqueda" placeholder="Buscar producto..." autocomplete="off" oninput="mostrarSugerencias()" />
+            <button class="boton-buscar" onclick="redirigirBusqueda()" aria-label="Buscar">
+              <i class="fas fa-search"></i>
+            </button>
+            <div id="sugerencias" class="sugerencias"></div>
+          </div>  
+
+          <div class="iconos">
+            <div id="carrito-icono" onclick="abrirModal()" aria-label="Carrito">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+
+            <div id="bienvenida">
+    <div id="usuario-icono">
+      <i class="fas fa-user-circle"></i>
+    </div>
+    <div id="menu-usuario">
+      <!-- El contenido del menú se actualizará con JavaScript -->
+    </div>
+  </div> 
+            
+
+<button class="menu-btn" onclick="document.querySelector('.menu-nav').classList.toggle('menu-activo')"
+                aria-label="Menú">
+                <span class="menu-icon">☰</span>
+              </button>
+          </div>
+        </div>
+
+        <div class="fila fila-inferior">
+          <ul class="menu-nav">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="producto-menu">
+              <div class="producto-titulo" onclick="toggleOpciones()">
+                <a href="producto.html">Productos</a>
+                <label>▾</label>
+              </div>
+              <div id="opcionesProducto" class="opciones-producto">
+                <a href="producto.html?categoria=todos"><button>Todos</button></a>
+                <a href="producto.html?categoria=cachetero"><button>Cachetero</button></a>
+                <a href="producto.html?categoria=bikini"><button>Bikini</button></a>
+                <a href="producto.html?categoria=semi-hilo"><button>Semi Hilo</button></a>
+                <a href="producto.html?categoria=topsito"><button>Topsito</button></a>
+              </div>
+            </li>
+            <li><a href="masqueunaempresa.html">Sobre nosotros</a></li>
+            <li><a href="contactanos.html">Contáctanos</a></li>
+            <li><a href="marvelover.html">Sé una Marvelover</a></li>
+            <li><a href="https://surl.lu/htktvd">Nuestro Catálogo</a></li>
+          </ul>
+        </div>
+
+      </nav>
+    </div>
+  </header>
+
+    <!-- Modal del carrito -->
+    <div id="modalCarrito" class="modal">
+      <div class="modal-contenido">
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+        <h2>Productos en el carrito</h2>
+        <div id="contenidoCarrito"></div>
+        <p id="subtotalProductos" class="subtotal-productos"></p>
+
+        <div class="caja-cupon">
+          <label for="cupon">Cupón:</label>
+          <input type="text" id="cupon" placeholder="Ingrese cupón" />
+          <button class="boton" onclick="aplicarCupon()">Aplicar</button>
+        </div>
+
+        <!-- Resumen del carrito simplificado -->
+        <div class="resumen-carrito">
+          <h3>Resumen del carrito</h3>
+          <p id="Subtotal"></p>
+          <p id="totalFinal" class="total-final"></p>
+        </div>
+
+        <div class="botones-carrito">
+          <button class="boton" onclick="actualizarCarrito()">
+            Actualizar compra
+          </button>
+          <button class="boton" onclick="finalizarCompra()">
+            Finalizar compra
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <form class="formulario">
+        <h1>Orden de pedido</h1>
+        <div class="formulario-datos">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" placeholder="Tu nombre" />
+
+          <label for="correo">Correo electrónico:</label>
+          <input type="email" id="correo" placeholder="Tu correo electrónico" />
+
+          <label for="telefono">Teléfono:</label>
+          <input type="tel" id="telefono" placeholder="Tu teléfono" />
+
+          <label for="direccion">Dirección:</label>
+          <input type="text" id="direccion" placeholder="Tu dirección" />
+
+          <div id="productos">
+            <div class="producto">
+              <img src="imagenes/CACHETERO DIJE.jpg" alt="CACHETERO DIJE" />
+              <div class="descripcion">
+                <h3>CACHETERO DIJE</h3>
+                <p>Precio: S/ 57.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="CACHETERO DIJE|57"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img
+                src="imagenes/CACHETERO DIJE ESTAMPADO.jpg"
+                alt="CACHETERO DIJE ESTAMPADO"
+              />
+              <div class="descripcion">
+                <h3>CACHETERO DIJE ESTAMPADO</h3>
+                <p>Precio: S/ 64.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="CACHETERO DIJE ESTAMPADO|64"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img
+                src="imagenes/CACHETEROCORAZON.jpg"
+                alt="CACHETERO CORAZON"
+              />
+              <div class="descripcion">
+                <h3>CACHETERO CORAZON</h3>
+                <p>Precio: S/ 65.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="CACHETERO CORAZON|65"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img
+                src="imagenes/CACHETEROCORAZON ESTAMPADO.jpg"
+                alt="CACHETERO CORAZON ESTAMPADO"
+              />
+              <div class="descripcion">
+                <h3>CACHETERO CORAZON ESTAMPADO</h3>
+                <p>Precio: S/ 70.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="CACHETERO CORAZON ESTAMPADO|70"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img src="imagenes/CACHETERO BLONDA.jpg" alt="CACHETERO BLONDA" />
+              <div class="descripcion">
+                <h3>CACHETERO BLONDA</h3>
+                <p>Precio: S/ 64.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="CACHETERO BLONDA|64"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img
+                src="imagenes/CACHETERO BLONDA CON LOGO.jpg"
+                alt="CACHETERO BLONDA CON LOGO"
+              />
+              <div class="descripcion">
+                <h3>CACHETERO BLONDA CON LOGO</h3>
+                <p>Precio: S/ 70.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="CACHETERO BLONDA CON LOGO|70"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img
+                src="imagenes/SEMI SEÑORIAL JUVENIL.jpg"
+                alt="SEMI SEÑORIAL JUVENIL"
+              />
+              <div class="descripcion">
+                <h3>SEMI SEÑORIAL JUVENIL</h3>
+                <p>Precio: S/ 73.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="SEMI SEÑORIAL JUVENIL|73"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img
+                src="imagenes/SEÑORIAL FLOREADO.jpg"
+                alt="SEÑORIAL FLOREADO"
+              />
+              <div class="descripcion">
+                <h3>SEÑORIAL FLOREADO</h3>
+                <p>Precio: S/ 76.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="SEÑORIAL FLOREADO|76"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img src="imagenes/ENCAJE ATRAS.jpg" alt="ENCAJE ATRAS" />
+              <div class="descripcion">
+                <h3>ENCAJE ATRAS</h3>
+                <p>Precio: S/ 70.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="ENCAJE ATRAS|70"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img src="imagenes/BIKINI CLASICO.jpg" alt="BIKINI CLASICO" />
+              <div class="descripcion">
+                <h3>BIKINI CLASICO</h3>
+                <p>Precio: S/ 56.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="BIKINI CLASICO|56"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img
+                src="imagenes/BIKINI ANIMAL PRINK.jpg"
+                alt="BIKINI ANIMAL PRINK"
+              />
+              <div class="descripcion">
+                <h3>BIKINI ANIMAL PRINK</h3>
+                <p>Precio: S/ 61.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="BIKINI ANIMAL PRINK|61"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img src="imagenes/BIKINI ESTRELLA.jpg" alt="BIKINI ESTRELLA" />
+              <div class="descripcion">
+                <h3>BIKINI ESTRELLA</h3>
+                <p>Precio: S/ 63.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="BIKINI ESTRELLA|63"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img src="imagenes/BIKINI BLONDA.jpg" alt="BIKINI BLONDA" />
+              <div class="descripcion">
+                <h3>BIKINI BLONDA</h3>
+                <p>Precio: S/ 58.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="BIKINI BLONDA|58"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img
+                src="imagenes/BIKINI PRETINA ANCHA.jpg"
+                alt="BIKINI PRETINA ANCHA"
+              />
+              <div class="descripcion">
+                <h3>BIKINI PRETINA ANCHA</h3>
+                <p>Precio: S/ 62.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="BIKINI PRETINA ANCHA|62"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img
+                src="imagenes/BIKINI MINI BLONDITA COMPLETA.jpg"
+                alt="BIKINI BLONDITA COMPLETA"
+              />
+              <div class="descripcion">
+                <h3>BIKINI BLONDITA COMPLETA</h3>
+                <p>Precio: S/ 65.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="BIKINI BLONDITA COMPLETA|65"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img
+                src="imagenes/SEMI HILO CLASICO.jpg"
+                alt="SEMI HILO CLASICO"
+              />
+              <div class="descripcion">
+                <h3>SEMI HILO CLASICO</h3>
+                <p>Precio: S/ 54.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="SEMI HILO CLASICO|54"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img src="imagenes/SEMI HILO DIJE.jpg" alt="SEMI HILO DIJE" />
+              <div class="descripcion">
+                <h3>SEMI HILO DIJE</h3>
+                <p>Precio: S/ 55.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="SEMI HILO DIJE|55"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img
+                src="imagenes/SEMI HILO PRETINA ANCHA.jpg"
+                alt="SEMI HILO PRETINA ANCHA"
+              />
+              <div class="descripcion">
+                <h3>SEMI HILO PRETINA ANCHA</h3>
+                <p>Precio: S/ 59.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="SEMI HILO PRETINA ANCHA|59"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img src="imagenes/TOPSITO OLIMPICO.jpg" alt="TOPSITO OLIMPICO" />
+              <div class="descripcion">
+                <h3>TOPSITO OLIMPICO</h3>
+                <p>Precio: S/ 67.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="TOPSITO OLIMPICO|67"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img
+                src="imagenes/TOPSITO CON TIRANTE.jpg"
+                alt="TOPSITO CON TIRANTE"
+              />
+              <div class="descripcion">
+                <h3>TOPSITO CON TIRANTE</h3>
+                <p>Precio: S/ 67.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="TOPSITO CON TIRANTE|67"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="producto">
+              <img src="imagenes/TOPSITO CLASICO.jpg" alt="TOPSITO CLASICO" />
+              <div class="descripcion">
+                <h3>TOPSITO CLASICO</h3>
+                <p>Precio: S/ 67.00</p>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="checkbox-producto"
+                    value="TOPSITO CLASICO|67"
+                  />
+                  Seleccionar</label
+                >
+                <div class="tallas">
+                  <label
+                    >S:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="S"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >M:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="M"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >L:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="L"
+                      min="0"
+                      value="0"
+                  /></label>
+                  <label
+                    >XL:
+                    <input
+                      type="number"
+                      class="cantidad"
+                      data-talla="XL"
+                      min="0"
+                      value="0"
+                  /></label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p id="totalPedido">Total del pedido: S/ 0.00</p>
+
+          <button type="button" id="boton-whatsapp" class="boton-whatsapp">
+            Enviar por WhatsApp
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2025 Marbellin Ladies Lingerie. Todos los derechos reservados.
+      </p>
+    </footer>
+
+    <script src="js/jspedido.js"></script>
+  </body>
+</html>

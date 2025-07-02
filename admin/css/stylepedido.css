@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Contenedor principal */
+.form-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+}
+
+/* Encabezado */
+form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #d83f87;
+}
+
+/* Estilos generales del formulario */
+.formulario-datos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* Productos */
+.producto {
+    display: flex;
+    background-color: #fce4ec;
+    border-radius: 10px;
+    padding: 15px;
+    gap: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.producto img {
+    width: 290px;
+    height: 250px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.descripcion {
+    margin-bottom: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.descripcion h3 {
+    margin-bottom: 4px;
+    font-size: 20px;
+    color: #d81b60;
+    font-weight:bold ;
+text-align: center;
+    
+}
+.descripcion p {
+    margin-bottom: 2px;
+    
+}
+.descripcion label {
+display: inline-block;
+padding: 8px 16px;
+border: 2px solid #e91e63;  
+border-radius: 8px;
+background-color: #f9ecf0;
+color: #0a0a0a;
+font-weight: 600;
+cursor: pointer;
+text-align: center;
+transition: all 0.3s ease;
+margin-top: 10px;
+}
+
+.descripcion label:hover {
+background-color: #e91e63;
+color: #fff;
+}
+
+.descripcion input[type="checkbox"] {
+margin-right: 6px;
+accent-color: #e91e63;  
+}
+
+.descripcion {
+    flex: 1;
+}
+
+.tallas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.tallas label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+    background-color: #fff;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.tallas input[type="number"] {
+    width: 180px;
+    padding: 4px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Total del pedido */
+#totalPedido {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #444;
+    text-align: center;
+}
+
+/* Botón WhatsApp */
+.boton-whatsapp {
+    background-color: #25D366;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.boton-whatsapp:hover {
+    background-color: #1ebe5b;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #f8bbd0;
+    color: #880e4f;
+    margin-top: 40px;
+    border-top: 2px solid #e91e63;
+    font-weight: bold;
+  }

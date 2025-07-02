@@ -1,0 +1,205 @@
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff0f5;
+  color: #333;
+  overflow-x: hidden; /* Evitar desplazamiento horizontal */
+}
+
+/* Estilos de la factura */
+.factura {
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 12px;
+  width: 92%;
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado de la factura */
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f48fb1;
+  padding-bottom: 12px;
+  margin-bottom: 25px;
+}
+
+.encabezado h2 {
+  color: #d81b60;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.factura-num {
+  text-align: right;
+}
+
+.factura-num h4 {
+  margin: 0;
+  color: #c2185b;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* Estilos de la sección de la factura */
+.seccion {
+  margin-bottom: 25px;
+}
+
+.seccion h4 {
+  background-color: #f8bbd0;
+  color: #880e4f;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 17px;
+}
+
+.seccion p {
+  margin: 5px 0;
+}
+
+/* Tabla de productos */
+.tabla-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #f48fb1;
+  padding: 10px;
+  text-align: center;
+  font-size: 15px;
+}
+
+th {
+  background-color: #fce4ec;
+  color: #ad1457;
+}
+
+/* Resumen de la factura */
+.resumen {
+  margin-top: 25px;
+  text-align: right;
+}
+
+.resumen p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+/* Estilos de los botones */
+.botones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.boton {
+  background-color: #ec407a;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+  min-width: 150px;
+  margin: 5px;
+  font-weight: bold;
+}
+
+.boton:hover {
+  background-color: #c2185b;
+  transform: scale(1.03);
+}
+
+.boton:focus {
+  outline: none;
+}
+
+/* Estilos responsivos para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* Ajuste de tamaño de fuente */
+  }
+
+  .factura {
+    width: 95%;
+    padding: 15px;
+    margin: 15px auto;
+  }
+
+  .encabezado {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .encabezado h2 {
+    font-size: 24px;
+  }
+
+  .factura-num {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .factura-num h4 {
+    font-size: 15px;
+  }
+
+  th, td {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .resumen {
+    text-align: center;
+  }
+
+  /* Estilos para los botones en móviles */
+  .botones {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .boton {
+    flex: 1 1 calc(50% - 10px); /* Dos botones por fila */
+    max-width: calc(50% - 10px);
+    margin: 5px 0;
+    text-align: center;
+  }
+}
+
+/* Estilos responsivos para pantallas más grandes (computadora o tablet en orientación horizontal) */
+@media (min-width: 769px) {
+  /* En pantallas grandes, los botones deben ir en una sola fila */
+  .botones {
+    justify-content: space-evenly; /* Asegura que los botones estén igualmente distribuidos */
+  }
+
+  .boton {
+    flex: 1 1 calc(25% - 10px); /* Cuatro botones por fila */
+    max-width: calc(25% - 10px);
+    margin: 5px;
+    text-align: center;
+  }
+}
+
+
+
+

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marbellin Lenceria Fina</title>
+    <link rel="shortcut icon" href="imagenes/icono.ico" type="image/x-icon" />
+    <linkrel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <linkhref="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap"  rel="stylesheet" />
+    <linkhref="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/stylecabeceraproducto.css" />
+    <link rel="stylesheet" href="css/stylemodal.css" />
+    <link rel="stylesheet" href="css/styleheader.css" />
+    <link rel="stylesheet" href="css/styleproducto.css" />
+    <link rel="stylesheet" href="css/styleservicio.css" />
+   
+    <script src="js/jsmodal.js"></script>
+    <script src="js/jsheader.js"></script>
+    <script src="js/jsmaun.js"></script>
+   
+  </head>
+
+  <body>
+   
+     <header>
+    <div class="contenedor">
+
+      <nav class="barra-nav">
+        <div class="fila fila-superior">
+          <div class="logo">
+            <img id="logo" src="imagenes/Logo.png" alt="Logo de Marbellin" />
+          </div>
+
+          <div class="buscador">
+            <input type="text" id="busqueda" placeholder="Buscar producto..." oninput="mostrarSugerencias()"
+              autocomplete="off" />
+            <button class="boton-buscar" onclick="buscarProducto()" aria-label="Buscar">
+              <i class="fas fa-search"></i>
+            </button>
+            <div id="sugerencias" class="sugerencias"></div>
+          </div>
+            <div class="iconos">
+              <div id="carrito-icono" onclick="mostrarModal()" aria-label="Carrito">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+
+              <a href="Login-Administrador.html" class="admin-icon" title="Modo administrador">
+                <i class="fas fa-user"></i>
+              </a>
+
+              <button class="menu-btn" onclick="document.querySelector('.menu-nav').classList.toggle('menu-activo')"
+                aria-label="Menú">
+                <span class="menu-icon">☰</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="fila fila-inferior">
+            <ul class="menu-nav">
+              <li><a href="index.html">Inicio</a></li>
+              <li class="producto-menu">
+                <div class="producto-titulo" onclick="toggleOpciones()">
+                  <a href="producto.html">Productos</a>
+                  <label>▾</label>
+                </div>
+                <div id="opcionesProducto" class="opciones-producto">
+                  <a href="producto.html?categoria=todos"><button>Todos</button></a>
+                <a href="producto.html?categoria=cachetero"><button>Cachetero</button></a>
+                <a href="producto.html?categoria=bikini"><button>Bikini</button></a>
+                <a href="producto.html?categoria=semi-hilo"><button>Semi Hilo</button></a>
+                <a href="producto.html?categoria=topsito"><button>Topsito</button></a>
+                </div>
+              </li>
+              <li><a href="masqueunaempresa.html">Sobre nosotros</a></li>
+              <li><a href="contactanos.html">Contáctanos</a></li>
+              <li><a href="marvelover.html">Sé una Marvelover</a></li>
+              <li><a href="https://surl.lu/htktvd">Nuestro Catálogo</a></li>
+            </ul>
+          </div>
+
+      </nav>
+    </div>
+  </header>
+
+      <!-- Modal del carrito -->
+<div id="modalCarrito" class="modal">
+  <div class="modal-contenido">
+    <!-- Botón de cierre -->
+    <span class="cerrar" onclick="cerrarModal()">&times;</span>
+
+    <!-- Título -->
+    <h2>Productos en el carrito</h2>
+
+    <!-- Contenedor de productos y subtotal -->
+    <div class="contenedor-productos-carrito">
+      <div id="contenidoCarrito" class="contenedor-carrito"></div>
+      <div id="subtotalProductos" class="subtotal-productos"></div>
+    </div>
+
+       <!-- Sección de cupón -->
+    <div class="caja-cupon">
+      <label for="cupon">Código de cupón:</label>
+      <input type="text" id="cupon" placeholder="Ingrese cupón">
+      <button class="boton boton-aplicar-cupon" onclick="aplicarCupon()">Aplicar Cupón</button>
+      <p id="mensajeCupon" class="mensaje-cupon"></p>
+    </div>
+ 
+  <!-- Resumen -->
+    <div class="resumen-carrito">
+      <h3>Resumen del carrito</h3>
+      <p id="Subtotal">Subtotal: $0.00</p>
+      <p id="totalFinal" class="total-final">Total: $0.00</p>
+    </div>
+
+
+    <!-- Botones -->
+    <div class="botones-carrito">
+      <button class="boton" onclick="actualizarCarrito()">Actualizar compra</button>
+      <button class="boton" onclick="finalizarCompra()">Finalizar compra</button>
+    </div>
+  </div>
+</div>
+  
+    
+    <div id="no-resultados" style="display: none">
+      <p>No se encontraron resultados para tu búsqueda.</p>
+    </div>
+
+    <div id="resaltado" class="producto">
+      <main>
+        <div class="productos-container" id="productos">
+          <a href="carrito.html?id=1025">
+            <div
+              class="product cachetero"
+              data-id="1025"
+              data-name="CACHETERO DIJE"
+              data-price="57"
+            >
+              <img src="imagenes/CACHETERO DIJE.jpg" alt="CACHETERO DIJE" />
+              <h3>CACHETERO DIJE</h3>
+              <p>S/ 57.00</p>
+            </div>
+          </a>
+          <a href="carrito.html?id=1052">
+            <div
+              class="product cachetero"
+              data-id="1052"
+              data-name="CACHETERO DIJE ESTAMPADO"
+              data-price="64"
+            >
+              <img
+                src="imagenes/CACHETERO DIJE ESTAMPADO.jpg"
+                alt="CACHETERO DIJE ESTAMPADO"
+              />
+              <h3>CACHETERO DIJE ESTAMPADO</h3>
+              <p>S/ 64.00</p>
+            </div>
+          </a>
+          <a href="carrito.html?id=1027">
+            <div
+              class="product cachetero"
+              data-id="1027"
+              data-name="CACHETERO CORAZON"
+              data-price="65"
+            >
+              <img
+                src="imagenes/CACHETEROCORAZON.jpg"
+                alt="CACHETERO CORAZON "
+              />
+              <h3>CACHETERO CORAZON</h3>
+              <p>S/ 65.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1072">
+            <div
+              class="product cachetero"
+              data-id="1072"
+              data-name="CACHETERO CORAZON ESTAMPADO"
+              data-price="70"
+            >
+              <img
+                src="imagenes/CACHETEROCORAZON ESTAMPADO.jpg"
+                alt="CACHETERO CORAZON ESTAMPADO"
+              />
+              <h3>CACHETERO CORAZON ESTAMPADO</h3>
+              <p>S/ 70.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1029">
+            <div
+              class="product cachetero"
+              data-id="1029"
+              data-name="CACHETERO BLONDA"
+              data-price="64"
+            >
+              <img src="imagenes/CACHETERO BLONDA.jpg" alt="CACHETERO BLONDA" />
+              <h3>CACHETERO BLONDA</h3>
+              <p>S/ 64.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1028">
+            <div
+              class="product cachetero"
+              data-id="1028"
+              data-name="CACHETERO BLONDA CON LOGO"
+              data-price="70"
+            >
+              <img
+                src="imagenes/CACHETERO BLONDA CON LOGO.jpg"
+                alt="CACHETERO BLONDA CON LOGO"
+              />
+              <h3>CACHETERO BLONDA CON LOGO</h3>
+              <p>S/ 70.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1048">
+            <div
+              class="product cachetero"
+              data-id="1048"
+              data-name="SEMI SEÑORIAL JUVENIL"
+              data-price="73"
+            >
+              <img
+                src="imagenes/SEMI SEÑORIAL JUVENIL.jpg"
+                alt="SEMI SEÑORIAL JUVENIL"
+              />
+              <h3>SEMI SEÑORIAL JUVENIL</h3>
+              <p>S/ 73.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1049">
+            <div
+              class="product cachetero"
+              data-id="1049"
+              data-name="SEÑORIAL FLOREADO"
+              data-price="76"
+            >
+              <img
+                src="imagenes/SEÑORIAL FLOREADO.jpg"
+                alt="SEÑORIAL FLOREADO"
+              />
+              <h3>SEÑORIAL FLOREADO</h3>
+              <p>S/ 76.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1050">
+            <div
+              class="product cachetero"
+              data-id="1050"
+              data-name="ENCAJE ATRAS"
+              data-price="70"
+            >
+              <img src="imagenes/ENCAJE ATRAS.jpg" alt="ENCAJE ATRAS" />
+              <h3>ENCAJE ATRAS</h3>
+              <p>S/ 70.00</p>
+            </div>
+          </a>
+          <a href="carrito.html?id=1022">
+            <div
+              class="product bikini"
+              data-id="1022"
+              data-name="BIKINI CLASICO"
+              data-price="56"
+            >
+              <img src="imagenes/BIKINI CLASICO.jpg" alt="BIKINI CLASICO" />
+              <h3>BIKINI CLASICO</h3>
+              <p>S/ 56.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1020">
+            <div
+              class="product bikini"
+              data-id="1020"
+              data-name="BIKINI ANIMAL PRINK"
+              data-price="61"
+            >
+              <img
+                src="imagenes/BIKINI ANIMAL PRINK.jpg"
+                alt="BIKINI ANIMAL PRINK"
+              />
+              <h3>BIKINI ANIMAL PRINK</h3>
+              <p>S/ 61.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1019">
+            <div
+              class="product bikini"
+              data-id="1019"
+              data-name="BIKINI ESTRELLA"
+              data-price="63"
+            >
+              <img src="imagenes/BIKINI ESTRELLA.jpg" alt="BIKINI ESTRELLA" />
+              <h3>BIKINI ESTRELLA</h3>
+              <p>S/ 63.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1024">
+            <div
+              class="product bikini"
+              data-id="1024"
+              data-name="BIKINI BLONDA"
+              data-price="58"
+            >
+              <img src="imagenes/BIKINI BLONDA.jpg" alt="BIKINI BLONDA" />
+              <h3>BIKINI BLONDA</h3>
+              <p>S/ 58.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1033">
+            <div
+              class="product bikini"
+              data-id="1033"
+              data-name="BIKINI PRETINA ANCHA"
+              data-price="62"
+            >
+              <img
+                src="imagenes/BIKINI PRETINA ANCHA.jpg"
+                alt="BIKINI PRETINA ANCHA"
+              />
+              <h3>BIKINI PRETINA ANCHA</h3>
+              <p>S/ 62.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1034">
+            <div
+              class="product bikini"
+              data-id="1034"
+              data-name="BIKINI BLONDITA COMPLETA"
+              data-price="65"
+            >
+              <img
+                src="imagenes/BIKINI MINI BLONDITA COMPLETA.jpg"
+                alt="BIKINI BLONDITA COMPLETA"
+              />
+              <h3>BIKINI BLONDITA COMPLETA</h3>
+              <p>S/ 65.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1026">
+            <div
+              class="product semi-hilo"
+              data-id="1026"
+              data-name="SEMI HILO CLASICO"
+              data-price="54"
+            >
+              <img
+                src="imagenes/SEMI HILO CLASICO.jpg"
+                alt="SEMI HILO CLASICO"
+              />
+              <h3>SEMI HILO CLASICO</h3>
+              <p>S/ 54.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1031">
+            <div
+              class="product semi-hilo"
+              data-id="1031"
+              data-name="SEMI HILO DIJE"
+              data-price="55"
+            >
+              <img src="imagenes/SEMI HILO DIJE.jpg" alt="SEMI HILO DIJE" />
+              <h3>SEMI HILO DIJE</h3>
+              <p>S/ 55.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1032">
+            <div
+              class="product semi-hilo"
+              data-id="1032"
+              data-name="SEMI HILO PRETINA ANCHA"
+              data-price="59"
+            >
+              <img
+                src="imagenes/SEMI HILO PRETINA ANCHA.jpg"
+                alt="SEMI HILO PRETINA ANCHA"
+              />
+              <h3>SEMI HILO PRETINA ANCHA</h3>
+              <p>S/ 59.00</p>
+            </div>
+          </a>
+
+          <!-- Topsitos de niña -->
+          <a href="carrito.html?id=1003">
+            <div
+              class="product topsito"
+              data-id="1003"
+              data-name="TOPSITO OLIMPICO"
+              data-price="67"
+            >
+              <img src="imagenes/TOPSITO OLIMPICO.jpg" alt="TOPSITO OLIMPICO" />
+              <h3>TOPSITO OLIMPICO</h3>
+              <p>S/ 67.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1002">
+            <div
+              class="product topsito"
+              data-id="1002"
+              data-name="TOPSITO CON TIRANTE"
+              data-price="67"
+            >
+              <img
+                src="imagenes/TOPSITO CON TIRANTE.jpg"
+                alt="TOPSITO CON TIRANTE"
+              />
+              <h3>TOPSITO CON TIRANTE</h3>
+              <p>S/ 67.00</p>
+            </div>
+          </a>
+
+          <a href="carrito.html?id=1001">
+            <div
+              class="product topsito"
+              data-id="1001"
+              data-name="TOPSITO CLASICO"
+              data-price="67"
+            >
+              <img src="imagenes/TOPSITO CLASICO.jpg" alt="TOPSITO CLASICO" />
+              <h3>TOPSITO CLASICO</h3>
+              <p>S/ 67.00</p>
+            </div>
+          </a>
+        </div>
+      </main>
+    </div>
+
+    <section class="info-section">
+      <div class="left-content">
+        <div class="info-column">
+          <h3>SERVICIO AL CLIENTE</h3>
+          <ul>
+            <li><a href="contacto.html">Contáctanos</a></li>
+            <li><a href="distribuidores.html">Distribuidores</a></li>
+            <li><a href="marvelover.html">Sé una Marvelover</a></li>
+            <li>
+              <a href="ordendepedido.html">Orden de pedido por whatsapp</a>
+            </li>
+            <video poster="imagenes/Marvelover.jpeg" controls>
+              <source src="imagenes/Marvelover.mp4" type="video/mp4" />
+            </video>
+          </ul>
+          <div class="social-buttons">
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              class="social-btn facebook"
+            >
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+                alt="Facebook"
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              class="social-btn instagram"
+            >
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/733/733558.png"
+                alt="Instagram"
+              />
+            </a>
+            <a
+              href="https://www.tiktok.com/"
+              target="_blank"
+              class="social-btn tiktok"
+            >
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png"
+                alt="TikTok"
+              />
+            </a>
+            <a
+              href="https://www.youtube.com/"
+              target="_blank"
+              class="social-btn youtube"
+            >
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
+                alt="YouTube"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna de CUENTA + CORPORACIÓN -->
+      <div class="center-content">
+        <div class="info-column">
+          <h3>CUENTA</h3>
+          <ul>
+            <li><a href="#crear-cuenta">Crear cuenta</a></li>
+            <li><a href="#libro">Libro de reclamos</a></li>
+          </ul>
+          <h3>CORPORACIÓN INNOVITEX MARBELLIN S.A.C</h3>
+          <ul>
+            <li><a href="#empresa">Más que una empresa</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Columna de CONTACTO -->
+      <div class="right-content">
+        <div class="info-column">
+          <h3>CONTACTO</h3>
+          <p>
+            Prolongación Huánuco 2010<br />Esquina con Av. Isabel La Católica<br />La
+            Victoria, Lima, Perú
+          </p>
+          <p>Teléfono: 536-4024 / 537-2501</p>
+          <p>
+            Correo:
+            <a href="mailto:marbellin.lenceriafina@gmail.com"
+              >marbellin.lenceriafina@gmail.com</a
+            >
+          </p>
+          <div class="map-container">
+            <iframe
+              class="map-frame"
+              src="https://www.google.com/maps?q=Prolongación+Huánuco+2010,+La+Victoria,+Lima,+Perú&output=embed"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="whatsapp-float">
+      <!-- El texto que redirige a WhatsApp -->
+      <a
+        href="https://wa.me/51922886724"
+        target="_blank"
+        class="whatsapp-bubble"
+      >
+        <!-- Texto que actúa como enlace -->
+        <span>¿Necesitas ayuda? Conversemos</span>
+        <div class="whatsapp-button">
+          <!-- Icono decorativo de WhatsApp -->
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+            alt="WhatsApp"
+          />
+        </div>
+      </a>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2025 Marbellin Ladies Lingerie. Todos los derechos reservados.
+      </p>
+    </footer>
+
+    <script src="js/jsbuscarproducto.js"></script>
+    
+  </body>
+</html>

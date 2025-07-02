@@ -1,0 +1,73 @@
+
+#bienvenida {
+  padding: 10px;
+ 
+  text-align: right;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+}
+
+    #usuario-icono {
+      display: inline-block;
+      cursor: pointer;
+      font-size: 24px;
+      color: #f06292;
+    }
+
+    #usuario-icono i {
+      font-size: 30px;
+    }
+
+    #menu-usuario {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      right: 10px;
+      top: 50px;
+      min-width: 220px;
+      z-index: 100;
+      overflow: hidden;
+    }
+
+    #menu-usuario span {
+      display: block;
+      padding: 14px 16px;
+      font-size: 15px;
+      background-color: #fce4ec;
+      color: #d81b60;
+      font-weight: bold;
+      border-bottom: 1px solid #f8bbd0;
+    }
+
+    #menu-usuario a,
+    #menu-usuario button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      font-size: 15px;
+      color: #333;
+      text-decoration: none;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    #menu-usuario a:hover,
+    #menu-usuario button:hover {
+      background-color: #f06292;
+      color: white;
+      cursor: pointer;
+    }
+
+    #menu-usuario i {
+      width: 20px;
+      text-align: center;
+    }
+  
+
