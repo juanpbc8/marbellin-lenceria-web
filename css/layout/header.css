@@ -200,6 +200,63 @@
     background-color: #a3002d;
 }
 
+/* Icono de usuario hover */
+.contenedor-usuario-hover {
+    position: relative;
+    display: inline-block;
+}
+
+.contenedor-usuario-hover .icono-usuario {
+    font-size: 30px;
+    color: #000;
+    transition: color 0.3s ease;
+}
+
+.contenedor-usuario-hover .icono-usuario:hover {
+    color: #c70039;
+}
+
+.menu-usuario {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 12px 15px;
+    width: 200px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10000;
+}
+
+.menu-usuario p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+    font-family: sans-serif;
+}
+
+.menu-usuario button {
+    padding: 8px;
+    background-color: #c70039;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-usuario button:hover {
+    background-color: #a3002d;
+}
+
+.contenedor-usuario-hover:hover .menu-usuario {
+    display: flex;
+}
 
 /*Fila inferior del nav*/
 .fila-inferior {

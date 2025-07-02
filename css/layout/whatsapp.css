@@ -1,0 +1,60 @@
+/* WhatsApp flotante */
+.whatsapp-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1000;
+}
+
+.whatsapp-bubble {
+    background-color: #25d366;
+    /* Verde claro como color inicial */
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    /* Alinea el texto y el icono */
+    gap: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+.whatsapp-bubble:hover {
+    background-color: #25d366;
+    /* Verde más oscuro en hover */
+    transform: scale(1.1);
+    /* Agranda el botón al pasar el mouse */
+    opacity: 0.9;
+    /* Agrega un efecto de opacidad en hover */
+}
+
+.whatsapp-button img {
+    width: 24px;
+    /* Tamaño pequeño para el icono */
+    height: 24px;
+}
+
+/* Cambiar el orden del icono para que vaya a la derecha */
+.whatsapp-bubble span {
+    order: 1;
+    /* Hace que el texto esté antes */
+}
+
+.whatsapp-bubble .whatsapp-button {
+    order: 2;
+    /* Hace que el icono esté después */
+}
+
+/* Efecto al pasar el mouse sobre el icono */
+.whatsapp-float:hover .whatsapp-button img {
+    transform: scale(1.1);
+    /* Efecto de escala en el icono */
+    transition: transform 0.3s ease;
+}
