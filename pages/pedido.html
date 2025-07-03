@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/base/reset.css">
+  <link rel="stylesheet" href="../css/base/variable.css">
+  <link rel="stylesheet" href="../css/layout/footer.css">
+  <link rel="stylesheet" href="../css/layout/whatsapp.css">
+  <link rel="stylesheet" href="../css/layout/header.css">
+  <link rel="stylesheet" href="../css/layout/form.css">
+  <link rel="stylesheet" href="../css/pedido.css">
+  <script src="../js/ubicacion-peru.js"></script>
+  <script src="../js/cargar-ubicacion.js"></script>
+  <title>Marbellin - Marbelover</title>
+  <script src="../js/headerBanner.js"></script>
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header>
+    <!-- Banner Section -->
+    <div class="banner-rotativo">
+      <img src="../assets/img/yape-header.png" alt="Yape header" class="banner-img visible">
+      <img src="../assets/img/web-beneficios.png" alt="Promo header" class="banner-img">
+    </div>
+    <nav>
+      <div class="fila-superior">
+        <!-- Logo-->
+        <a href="/index.html">
+          <img id="logo" src="../assets/icons/logo.png" alt="Logo de Marbellin">
+        </a>
+        <!-- Div buscador-->
+        <div class="buscador">
+          <input type="text" placeholder="Buscar producto..." autocomplete="off" />
+          <button class="boton-buscar" aria-label="Buscar">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <!-- Div iconos-->
+        <div class="iconos">
+          <div class="contenedor-carrito-hover">
+            <a href="checkout.html">
+              <i class="fas fa-shopping-cart icono-carrito"></i>
+            </a>
+            <div class="mini-carrito oculto">
+              <ul class="lista-carrito"></ul>
+              <button class="btn-ir-a-pagar">Pagar</button>
+            </div>
+          </div>
+          <!-- Ícono de usuario con menú desplegable -->
+          <div class="contenedor-usuario-hover">
+            <i class="fas fa-user-circle icono-usuario"></i>
+            <div class="menu-usuario oculto">
+              <!-- Este contenido será generado dinámicamente por JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Menu -->
+      <div class="fila-inferior">
+        <ul class="menu-nav">
+          <li><a href="../index.html">Inicio</a></li>
+          <li class="dropdown">
+            <a href="productos.html">Productos ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="productos.html?cat=cachetero">Cachetero</a></li>
+              <li><a href="productos.html?cat=bikini">Bikini</a></li>
+              <li><a href="productos.html?cat=semihilo">Semi Hilo</a></li>
+              <li><a href="productos.html?cat=topsito">Topsito</a></li>
+            </ul>
+          </li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="marbelover.html">Se una Marbelover</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="https://surl.lu/htktvd" target="_blank">Nuestro Catálogo</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Section -->
+  <main class="formulario-contenedor">
+    <section class="formulario-datos">
+      <h1>Datos para el envío</h1>
+      <form id="formularioCliente">
+        <label for="nombres">Nombres:</label>
+        <input type="text" id="nombres" name="nombres" required />
+
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required />
+
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required />
+
+        <label for="direccion">Dirección de entrega:</label>
+        <textarea id="direccion" name="direccion" rows="3" required></textarea>
+
+        <button type="submit">Finalizar pedido</button>
+      </form>
+    </section>
+
+    <section class="formulario-resumen">
+      <h2>Resumen del pedido</h2>
+      <div id="listaResumen"></div>
+      <p class="formulario-total">Total: <span id="totalResumen">S/.0.00</span></p>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <section id="footer1">
+      <div class="column">
+        <!-- Info cliente -->
+        <h3>SERVICIO AL CLIENTE</h3>
+        <ul>
+          <li><a href="contacto.html">Contactanos</a></li>
+          <li><a href="">Distribuidores</a></li>
+          <li><a href="marbelover.html">Sé una Marvelover</a></li>
+          <li><a href="">Orden de pedido por whatsapp</a></li>
+        </ul>
+        <!-- Redes sociales -->
+        <div class="social-buttons">
+          <a class="social-btn" href="https://www.facebook.com/share/16LxCFavzs/" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" />
+          </a>
+          <a class="social-btn" href="https://www.instagram.com/marbellin_lenceria" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" />
+          </a>
+          <a class="social-btn" href="https://www.tiktok.com/@maribellin.lenceria" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" alt="TikTok" />
+          </a>
+          <a class="social-btn" href="https://youtube.com/@lenceria_de_dama_2024" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+          </a>
+        </div>
+      </div>
+      <!-- Info cuenta -->
+      <div class="column">
+        <h3>CUENTA</h3>
+        <ul>
+          <li><a href="login.html">Crear cuenta</a></li>
+          <li>
+            <a href="libro-reclamaciones.html">
+              <img src="../assets/icons/icono-libro-reclamaciones.svg" alt="Libro de reclamaciones">
+            </a>
+          </li>
+        </ul>
+        <h3>CORPORACIÓN INNOVITEX MARBELLIN S.A.C</h3>
+        <ul>
+          <li><a href="nosotros.html">Sobre nosotros</a></li>
+          <li><a href="terminos.html">Términos y condiciones</a></li>
+          <li><a href="politica-privacidad.html">Política de privacidad</a></li>
+          <li><a href="cambios-devoluciones.html">Cambios y devoluciones</a></li>
+          <li><a href="contacto.html">Contactanos</a></li>
+          </a>
+        </ul>
+      </div>
+      <!-- Info contacto -->
+      <div class="column">
+        <h3>CONTACTO</h3>
+        <p>
+          Prolongación Huánuco 2010<br>
+          Esquina con Av. Isabel La Católica<br>
+          La Victoria, Lima, Perú
+        </p>
+        <p>Teléfono: +51 922886724</p>
+        <p>Correo:
+          <a href="mailto:marbellin.lenceriafina@gmail.com">marbellin.lenceriafina@gmail.com</a>
+        </p>
+        <div class="map-container">
+          <iframe class="map-frame"
+            src="https://www.google.com/maps?q=Prolongación+Huánuco+2010,+La+Victoria,+Lima,+Perú&output=embed"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+    <p id="derechos">&copy; 2025 Marbellin Ladies Lingerie. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="../js/cart/pedido.js"></script>
+  <script type="module" src="../js/cart/main-carrito.js"></script>
+  <script type="module" src="../js/search/buscador.js"></script>
+  <script type="module">
+    import { configurarMenuUsuario } from "../js/auth/menuUsuario.js";
+    configurarMenuUsuario();
+  </script>
+</body>
+
+</html>
