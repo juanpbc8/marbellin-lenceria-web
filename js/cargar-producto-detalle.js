@@ -74,8 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Evento del botón
-  const btnAgregar = document.getElementById("btnAgregarCarrito");
-  btnAgregar.addEventListener("click", () => {
+  const btnAgregarAlCarrito = document.getElementById("btnAgregarCarrito");
+  btnAgregarAlCarrito.addEventListener("click", () => {
     const talla = document.getElementById("talla").value;
     const cantidad = parseInt(document.getElementById("cantidad").value);
 
@@ -88,7 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
       id: `${producto.id}-${colorSeleccionado}-${talla}`,
       nombre: `${producto.nombre} (${colorSeleccionado}, Talla ${talla})`,
       precio: producto.precio,
-      cantidad: cantidad
+      cantidad: cantidad,
+      imagen: producto.imagen
     });
 
     alert("Producto añadido al carrito.");
