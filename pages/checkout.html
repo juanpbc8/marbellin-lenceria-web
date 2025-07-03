@@ -13,12 +13,17 @@
   <link rel="stylesheet" href="../css/layout/header.css">
   <link rel="stylesheet" href="../css/checkout.css">
   <title>Marbellin - Resumen del Pedido</title>
-
+  <script src="../js/headerBanner.js"></script>
 </head>
 
 <body>
   <!-- Header Section -->
   <header>
+    <!-- Banner Section -->
+    <div class="banner-rotativo">
+      <img src="../assets/img/yape-header.png" alt="Yape header" class="banner-img visible">
+      <img src="../assets/img/web-beneficios.png" alt="Promo header" class="banner-img">
+    </div>
     <nav>
       <div class="fila-superior">
         <!-- Logo-->
@@ -81,10 +86,12 @@
       <table>
         <thead>
           <tr>
+            <th>Imagen</th>
             <th>Producto</th>
             <th>Cantidad</th>
             <th>Precio unitario</th>
             <th>Subtotal</th>
+            <th>Accion</th>
           </tr>
         </thead>
         <tbody id="contenidoCheckout">
@@ -92,13 +99,16 @@
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="3" style="text-align: right; font-weight: bold">Total:</td>
+            <td colspan="5" style="text-align: right; font-weight: bold">Total:</td>
             <td id="totalCheckout">S/.0.00</td>
           </tr>
         </tfoot>
       </table>
     </div>
-    <button id="botonPagar">Confirmar y Pagar</button>
+    <div class="botones-checkout">
+      <button id="botonSeguirComprando">Seguir comprando</button>
+      <button id="botonPagar">Confirmar y Pagar</button>
+    </div>
     <!-- Whatsapp flotante -->
     <div class="whatsapp-float">
       <a href="https://wa.me/51922886724" target="_blank" class="whatsapp-bubble">
