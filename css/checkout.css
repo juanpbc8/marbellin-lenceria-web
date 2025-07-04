@@ -1,82 +1,205 @@
-.formulario-contenedor {
-    max-width: 1100px;
-    margin: 40px auto;
+.checkout-wrapper {
     display: flex;
-    gap: 40px;
-    background: white;
-    padding: 30px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 2rem auto;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.checkout-wrapper .formulario-pasos {
+    flex: 1 1 65%;
+    background-color: #fff0f5;
+    padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.formulario-datos {
-    flex: 1;
+.checkout-wrapper .formulario-resumen {
+    flex: 1 1 30%;
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 2rem;
 }
 
-.formulario-datos h1 {
-    margin-bottom: 20px;
-    color: #c70039;
+.checkout-wrapper .formulario-resumen h2 {
+    margin-bottom: 1rem;
 }
 
-form label {
-    display: block;
-    margin: 10px 0 5px;
+.checkout-wrapper .barra-progreso {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.checkout-wrapper .barra-progreso .paso {
+    width: 35px;
+    height: 35px;
+    background: #ddd;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
     font-weight: bold;
+    color: #333;
+    transition: background 0.3s;
 }
 
-form input,
-form textarea {
-    width: 100%;
-    padding: 10px;
+.checkout-wrapper .barra-progreso .paso.activo {
+    background: #ff69b4;
+    color: #fff;
+}
+
+.checkout-wrapper .formulario-paso {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.checkout-wrapper .formulario-paso.activo {
+    display: flex;
+}
+
+.checkout-wrapper input,
+.checkout-wrapper textarea,
+.checkout-wrapper select {
+    padding: 0.6rem;
     border: 1px solid #ccc;
     border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-form button {
-    margin-top: 20px;
-    background-color: #c70039;
-    color: white;
-    padding: 12px 20px;
+.checkout-wrapper button {
+    margin-top: 1rem;
+    padding: 0.8rem 1.2rem;
     border: none;
+    background-color: #ff69b4;
+    color: white;
     border-radius: 6px;
-    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-form button:hover {
-    background-color: #a3002d;
+.checkout-wrapper button:hover {
+    background-color: #ff1493;
 }
 
-.formulario-resumen {
-    width: 350px;
-    border-left: 1px solid #eee;
-    padding-left: 20px;
+.checkout-wrapper .input-error {
+    border-color: red !important;
+    background-color: #ffe5e5;
 }
 
-.formulario-resumen h2 {
-    margin-bottom: 10px;
-    color: #8a004f;
+.checkout-wrapper .item-resumen {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
 }
 
-.formulario-resumen .item {
+.checkout-wrapper .item-resumen img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.checkout-wrapper .item-resumen p {
+    margin: 0.2rem 0;
+    font-size: 0.9rem;
+}
+
+.checkout-wrapper .contenedor-botones-entrega {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.checkout-wrapper .boton-entrega {
+    flex: 1 1 45%;
+    background-color: #ffe6f0;
+    border: 2px solid transparent;
+    padding: 0.8rem 1rem;
+    border-radius: 16px;
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
-}
-
-.item img {
-    width: 60px;
-    height: auto;
-    border-radius: 6px;
-    margin-right: 10px;
-}
-
-.item-info {
-    font-size: 14px;
-}
-
-.formulario-total {
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
     font-weight: bold;
-    margin-top: 20px;
+    color: #c94c8c;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.checkout-wrapper .boton-entrega i {
+    font-size: 1.3rem;
+    color: #c94c8c;
+    transition: color 0.3s ease;
+}
+
+.checkout-wrapper .boton-entrega.activo {
+    background-color: #ff69b4;
+    color: #fff;
+    border-color: #ff69b4;
+}
+
+.checkout-wrapper .boton-entrega.activo i {
+    color: #fff;
+}
+
+.checkout-wrapper .boton-entrega:hover {
+    background-color: #ffc0df;
+    border-color: #ff69b4;
+    color: #c94c8c;
+}
+
+.checkout-wrapper .boton-entrega:hover i {
+    color: #c94c8c;
+}
+
+.checkout-wrapper #delivery-fields,
+.checkout-wrapper #tienda-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.checkout-wrapper #delivery-fields label,
+.checkout-wrapper #delivery-fields input,
+.checkout-wrapper #delivery-fields select,
+.checkout-wrapper #tienda-fields label,
+.checkout-wrapper #tienda-fields input,
+.checkout-wrapper #tienda-fields select {
+    margin-bottom: 0.5rem;
+}
+
+.checkout-wrapper #delivery-fields input,
+.checkout-wrapper #tienda-fields select {
+    margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .checkout-wrapper {
+        flex-direction: column;
+    }
+
+    .checkout-wrapper .formulario-resumen {
+        position: static;
+        order: 2;
+    }
+
+    .checkout-wrapper .formulario-pasos {
+        order: 1;
+    }
 }

@@ -46,11 +46,11 @@ function renderizarCheckout() {
 }
 
 botonPagar.addEventListener("click", () => {
-    window.location.href = "pedido.html";
+    window.location.href = "checkout.html";
 });
 
 botonSeguirComprando.addEventListener("click", () => {
-    window.location.href = "productos.html";
+    window.location.href = "productos.html"; 2
 });
 
 function actualizarEventosInteraccion() {
