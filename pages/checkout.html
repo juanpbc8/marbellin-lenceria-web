@@ -13,10 +13,11 @@
   <link rel="stylesheet" href="../css/layout/whatsapp.css">
   <link rel="stylesheet" href="../css/layout/header.css">
   <link rel="stylesheet" href="../css/layout/form.css">
-  <link rel="stylesheet" href="../css/pedido.css">
+  <link rel="stylesheet" href="../css/checkout.css">
   <script src="../js/ubicacion-peru.js"></script>
   <script src="../js/cargar-ubicacion.js"></script>
   <title>Marbellin - Marbelover</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>=
   <script src="../js/headerBanner.js"></script>
 </head>
 
@@ -44,7 +45,7 @@
         <!-- Div iconos-->
         <div class="iconos">
           <div class="contenedor-carrito-hover">
-            <a href="checkout.html">
+            <a href="resumen-pedido.html">
               <i class="fas fa-shopping-cart icono-carrito"></i>
             </a>
             <div class="mini-carrito oculto">
@@ -84,31 +85,106 @@
   </header>
 
   <!-- Main Section -->
-  <main class="formulario-contenedor">
-    <section class="formulario-datos">
-      <h1>Datos para el envío</h1>
-      <form id="formularioCliente">
+  <main class="checkout-wrapper">
+    <!-- Sección de pasos -->
+    <section class="formulario-pasos">
+      <!-- Indicador de paso -->
+      <div class="barra-progreso">
+        <span class="paso activo">1</span>
+        <span class="paso">2</span>
+        <span class="paso">3</span>
+      </div>
+
+      <!-- Paso 1: Datos del cliente -->
+      <form id="paso1" class="formulario-paso activo">
+        <h1>Datos del cliente</h1>
         <label for="nombres">Nombres:</label>
-        <input type="text" id="nombres" name="nombres" required />
+        <input type="text" id="nombres" required>
 
         <label for="apellidos">Apellidos:</label>
-        <input type="text" id="apellidos" name="apellidos" required />
+        <input type="text" id="apellidos" required>
 
         <label for="correo">Correo electrónico:</label>
-        <input type="email" id="correo" name="correo" required />
+        <input type="email" id="correo" required>
 
-        <label for="direccion">Dirección de entrega:</label>
-        <textarea id="direccion" name="direccion" rows="3" required></textarea>
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" required maxlength="8">
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" required>
+
+        <button type="button" onclick="siguientePaso(1)">Siguiente</button>
+      </form>
+
+      <!-- Paso 2: Método de entrega -->
+      <form id="paso2" class="formulario-paso">
+        <h1>Método de entrega</h1>
+
+        <div class="contenedor-botones-entrega">
+          <button type="button" id="btn-delivery" class="boton-entrega activo">
+            <i class="fas fa-truck"></i>
+            <span>Delivery</span>
+          </button>
+          <button type="button" id="btn-tienda" class="boton-entrega">
+            <i class="fas fa-store"></i>
+            <span>Recojo en tienda</span>
+          </button>
+        </div>
+
+        <div id="delivery-fields">
+          <label for="departamento">Departamento:</label>
+          <select id="departamento" required></select>
+
+          <label for="provincia">Provincia:</label>
+          <select id="provincia" required></select>
+
+          <label for="distrito">Distrito:</label>
+          <select id="distrito" required></select>
+
+          <label for="direccion">Dirección exacta:</label>
+          <input type="text" id="direccion" placeholder="Ej. Av. Perú 123, Int. 2" required>
+
+          <label for="referencia">Referencia (opcional):</label>
+          <input type="text" id="referencia" placeholder="Cerca a la iglesia, parque, etc.">
+        </div>
+
+        <div id="tienda-fields" style="display: none;">
+          <label>Tienda para recojo:</label>
+          <select>
+            <option>Tienda Principal - Prolongación Huánuco 2010
+              Esquina con Av. Isabel La Católica
+              La Victoria</option>
+          </select>
+        </div>
+        <button type="button" onclick="siguientePaso(2)">Siguiente</button>
+        <button type="button" onclick="anteriorPaso(2)">Anterior</button>
+      </form>
+
+
+      <!-- Paso 3: Método de pago -->
+      <form id="paso3" class="formulario-paso">
+        <h1>Método de pago</h1>
+
+        <label><input type="radio" name="pago" value="tarjeta"> Tarjeta de crédito/débito</label>
+        <label><input type="radio" name="pago" value="yape"> Yape</label>
+        <label><input type="radio" name="pago" value="plin"> Plin</label>
+        <label><input type="radio" name="pago" value="contraentrega"> Contra entrega</label>
+
+        <label>
+          <input type="checkbox" required>
+          Acepto los <a href="terminos.html">términos y condiciones</a>
+        </label>
 
         <button type="submit">Finalizar pedido</button>
+        <button type="button" onclick="anteriorPaso(3)">Anterior</button>
       </form>
     </section>
-
-    <section class="formulario-resumen">
+    <!-- Resumen del pedido (lateral en desktop) -->
+    <aside class="formulario-resumen">
       <h2>Resumen del pedido</h2>
       <div id="listaResumen"></div>
       <p class="formulario-total">Total: <span id="totalResumen">S/.0.00</span></p>
-    </section>
+    </aside>
   </main>
 
   <!-- Footer Section -->
@@ -183,7 +259,8 @@
   </footer>
 
   <!-- Scripts -->
-  <script type="module" src="../js/cart/pedido.js"></script>
+  <script type="module" src="../js/cart/checkout.js"></script>
+  <script type="module" src="../js/cargar-ubicacion.js"></script>
   <script type="module" src="../js/cart/main-carrito.js"></script>
   <script type="module" src="../js/search/buscador.js"></script>
   <script type="module">
