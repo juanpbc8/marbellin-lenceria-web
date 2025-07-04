@@ -1,35 +1,42 @@
 export function registrarUsuario() {
     const formRegistro = document.getElementById("formRegistro");
 
-    formRegistro.addEventListener("submit", (e) => {
+    formRegistro.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const nombre = document.getElementById("nombre").value;
-        const correo = document.getElementById("correo").value;
+        const nombre = document.getElementById("nombre").value.trim();
+        const correo = document.getElementById("correo").value.trim();
         const contrasena = document.getElementById("contrasena").value;
         const confirmar = document.getElementById("confirmarContrasena").value;
-        const telefono = document.getElementById("telefono").value;
-        const departamento = document.getElementById("departamento").value;
-        const provincia = document.getElementById("provincia").value;
-        const distrito = document.getElementById("distrito").value;
 
         if (contrasena !== confirmar) {
             alert("Las contraseñas no coinciden");
             return;
         }
 
-        const usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
-        const existe = usuarios.find((u) => u.correo === correo);
+        try {
+            const response = await fetch("http://localhost:8080/api/clientes/registrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ nombre, correo, contrasena })
+            });
 
-        if (existe) {
-            alert("Ya existe una cuenta con ese correo");
-            return;
+            if (response.status === 201) {
+                alert("Registro exitoso");
+                formRegistro.reset();
+                document.getElementById("mostrarLogin").click();
+            } else if (response.status === 409) {
+                const error = await response.text();
+                alert(error || "El correo ya está registrado");
+            } else {
+                const error = await response.text();
+                alert("Error en el registro: " + error);
+            }
+        } catch (err) {
+            console.error("Error de red:", err);
+            alert("No se pudo conectar al servidor");
         }
-
-        usuarios.push({ nombre, correo, contrasena, telefono, departamento, provincia, distrito });
-        localStorage.setItem("usuarios", JSON.stringify(usuarios));
-        alert("Registro exitoso");
-        formRegistro.reset();
-        document.getElementById("mostrarLogin").click();
     });
 }

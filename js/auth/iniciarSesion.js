@@ -7,7 +7,7 @@ export function iniciarSesion() {
     const btnVerificar = document.getElementById("verifyCodeBtn");
     const errorCodigo = document.getElementById("codeError");
 
-    form.addEventListener("submit", function (e) {
+    form.addEventListener("submit", async function (e) {
         e.preventDefault();
 
         const correo = document.getElementById("correoLogin").value.trim();
@@ -17,7 +17,6 @@ export function iniciarSesion() {
         if (contrasena === "admin123") {
             generatedCode = generarCodigo6();
 
-            // Enviar email con EmailJS
             emailjs.send("service_m8isllo", "template_7j53wgk", {
                 passcode: generatedCode,
                 time: new Date().toLocaleString(),
@@ -33,21 +32,34 @@ export function iniciarSesion() {
             return;
         }
 
-        // === FLUJO DE USUARIO NORMAL ===
-        const usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
-        const usuario = usuarios.find(u => u.correo === correo && u.contrasena === contrasena);
+        // === FLUJO DE CLIENTE USANDO API SPRING BOOT ===
+        try {
+            const response = await fetch("http://localhost:8080/api/clientes/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ correo, contrasena })
+            });
 
-        if (!usuario) {
-            alert("Credenciales inválidas.");
-            return;
+            if (response.ok) {
+                const cliente = await response.json();
+                localStorage.setItem("usuarioActivo", JSON.stringify(cliente));
+                alert("¡Bienvenido " + cliente.nombre + "!");
+                window.location.href = "/index.html";
+            } else if (response.status === 401) {
+                alert("Credenciales inválidas.");
+            } else {
+                const error = await response.text();
+                alert("Error al iniciar sesión: " + error);
+            }
+        } catch (err) {
+            console.error("Error de red:", err);
+            alert("No se pudo conectar al servidor");
         }
-
-        localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
-        alert("¡Bienvenido " + usuario.nombre + "!");
-        window.location.href = "/index.html";
     });
 
-    // Botón de verificar código
+    // === VERIFICAR CÓDIGO PARA ADMIN ===
     btnVerificar.addEventListener("click", () => {
         const ingresado = inputCodigo.value.trim();
 
