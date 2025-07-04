@@ -1,0 +1,108 @@
+.resumen-contenedor {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.resumen-contenedor h1 {
+    color: #c70039;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead th {
+    background-color: #f8bbd0;
+    color: #8a004f;
+    padding: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+tbody td,
+tfoot td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+tfoot td {
+    font-weight: bold;
+}
+
+.tabla-productos img {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.botones-checkout {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 30px;
+}
+
+#botonPagar {
+    background-color: #c70039;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+#botonSeguirComprando {
+    background-color: #c70039;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#botonPagar:hover:not(:disabled) {
+    background-color: #a3002d;
+}
+
+#botonPagar:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#botonSeguirComprando:hover {
+    background-color: #a3002d;
+}
+
+.input-cantidad {
+    width: 60px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.btn-eliminar {
+    background: none;
+    border: none;
+    color: #c70039;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.btn-eliminar:hover {
+    color: #8a004f;
+}
