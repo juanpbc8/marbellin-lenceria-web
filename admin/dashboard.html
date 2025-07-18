@@ -41,11 +41,11 @@
     </div>
     <a href="#" onclick="mostrarPanel('inicio')"><span class="material-icons">home</span> Inicio</a>
     <a href="Panelproducto/admin.html"><span class="material-icons">category</span> Productos</a>
-    <a href="#" onclick="mostrarPanel('cupones')"><span class="material-icons">local_offer</span> Cupones</a>
-    <a href="#" onclick="mostrarPanel('pedidos')"><span class="material-icons">shopping_cart</span> Pedidos</a>
+    <!-- <a href="#" onclick="mostrarPanel('cupones')"><span class="material-icons">local_offer</span> Cupones</a> -->
+    <!-- <a href="#" onclick="mostrarPanel('pedidos')"><span class="material-icons">shopping_cart</span> Pedidos</a> -->
     <a href="#" onclick="mostrarPanel('cliente')"><span class="material-icons">people</span> Clientes</a>
-    <a href="#"><span class="material-icons">bar_chart</span> Estadísticas</a>
-    <a href="#"><span class="material-icons">settings</span> Configuración</a>
+    <!-- <a href="#"><span class="material-icons">bar_chart</span> Estadísticas</a> -->
+    <!-- <a href="#"><span class="material-icons">settings</span> Configuración</a> -->
   </aside>
 
   <header>
@@ -68,7 +68,7 @@
           <button><a href="Panelproducto/admin.html" style="text-decoration: none; color: inherit;">Ver</a></button>
         </div>
 
-        <div class="dashboard-card">
+        <!-- <div class="dashboard-card">
           <span class="material-icons">shopping_cart</span>
           <h3>Pedidos</h3>
           <p>Gestiona ventas y entregas.</p>
@@ -87,7 +87,7 @@
           <h3>Cupones</h3>
           <p>Crea descuentos atractivos.</p>
           <button onclick="mostrarPanel('cupones')">Ver</button>
-        </div>
+        </div> -->
 
         <div class="dashboard-card">
           <span class="material-icons">group</span>
@@ -96,7 +96,7 @@
           <button onclick="mostrarPanel('cliente')">Ver</button>
         </div>
 
-        <div class="dashboard-card">
+        <!-- <div class="dashboard-card">
           <span class="material-icons">settings</span>
           <h3>Configuración</h3>
           <p>Ajusta parámetros de la tienda.</p>
@@ -122,7 +122,7 @@
           <h3>Galería</h3>
           <p>Gestiona imágenes de productos y banners.</p>
           <button onclick="mostrarPanel('ofertas')">Ver</button>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -321,11 +321,8 @@
       <div class="contenedor-historial-externo">
         <h2>Historial de Compras</h2>
         <button id="btn-eliminar-historial" onclick="eliminarHistorial()">Eliminar Historial</button>
-
         <div class="contenedor-historial" id="historial">
-          <!-- Aquí se cargan dinámicamente las compras -->
         </div>
-
       </div>
     </div>
 
@@ -343,13 +340,13 @@
           <table id="tablaClientes">
             <thead>
               <tr>
-                <th>DNI</th>
+                <th>ID</th>
                 <th>Nombre</th>
-                <th>Dirección</th>
-                <th>Región</th>
-                <th>Teléfono</th>
                 <th>Correo</th>
-                <th>Acciones</th>
+                <th>Fecha registro</th>
+                <!-- <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Acciones</th> -->
               </tr>
             </thead>
             <tbody>
@@ -373,6 +370,7 @@
   <script src="js/jsadmin-cupon.js"></script>
   <script src="js/jsadmin-pedido.js"></script>
   <script src="js/jsadmin-cliente.js"></script>
+  <script src="js/cargar-productos.js"></script>
   <script>
     // --- Cerrar sesión ---
     function cerrarSesion() {

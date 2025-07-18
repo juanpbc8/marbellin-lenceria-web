@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="../assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./css/base/reset.css">
+  <link rel="stylesheet" href="./css/base/variable.css">
+  <link rel="stylesheet" href="./css/login.css" />
+
+  <title>Marbellin - Admin</title>
+</head>
+
+<body>
+  <div class="contenedor-formulario admin">
+    <div class="formulario active" id="loginContainer">
+      <h2>Panel Administrativo</h2>
+      <div class="alerta-admin">Acceso exclusivo para administradores</div>
+      <form id="formLoginAdmin">
+        <input type="email" id="correoLogin" placeholder="Correo administrativo" required />
+        <input type="password" id="contrasenaLogin" placeholder="Contraseña" required />
+        <button type="submit">Ingresar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="./js/auth/login.js" defer></script>
+</body>
+
+</html>

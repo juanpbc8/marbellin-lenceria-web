@@ -254,9 +254,9 @@
       <tbody id="tablaProductos"></tbody>
     </table>
 
-    <h1 id="formTitulo">Agregar Nuevo Producto</h1>
+    <!-- <h1 id="formTitulo">Agregar Nuevo Producto</h1> -->
 
-    <form id="formAgregarProducto" onsubmit="event.preventDefault(); guardarProducto();">
+    <!-- <form id="formAgregarProducto" onsubmit="event.preventDefault(); guardarProducto();">
       <label for="id">ID del Producto:</label>
       <input type="number" id="id" min="1" required>
 
@@ -295,7 +295,7 @@
 
       <button type="submit" id="btnGuardar">Agregar Producto</button>
       <button type="button" id="btnLimpiar" onclick="limpiarFormulario()">Limpiar Formulario</button>
-    </form>
+    </form> -->
 
     <h1 id="formEditarTitulo" style="display:none;">Editar Producto</h1>
 
@@ -592,7 +592,7 @@
       // Mostrar productos al cargar la página
       window.onload = () => mostrarProductosEnTabla();
     </script>
-
+    <script src="../js/cargar-productos.js"></script>
 </body>
 
 </html>

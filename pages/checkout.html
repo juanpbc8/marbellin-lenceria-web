@@ -113,6 +113,20 @@
         <label for="telefono">Teléfono:</label>
         <input type="tel" id="telefono" required>
 
+        <div class="formulario-factura">
+          <input type="checkbox" id="checkbox-factura">
+          <label for="checkbox-factura">¿Deseas factura?</label>
+
+          <div id="campos-factura" style="display: none;">
+            <label for="razonSocial">Razón Social:</label>
+            <input type="text" id="razonSocial" placeholder="Nombre de empresa o contribuyente">
+
+            <label for="ruc">RUC:</label>
+            <input type="text" id="ruc" maxlength="11" placeholder="11 dígitos">
+          </div>
+        </div>
+
+
         <button type="button" onclick="siguientePaso(1)">Siguiente</button>
       </form>
 
@@ -165,19 +179,39 @@
       <form id="paso3" class="formulario-paso">
         <h1>Método de pago</h1>
 
-        <label><input type="radio" name="pago" value="tarjeta"> Tarjeta de crédito/débito</label>
-        <label><input type="radio" name="pago" value="yape"> Yape</label>
-        <label><input type="radio" name="pago" value="plin"> Plin</label>
-        <label><input type="radio" name="pago" value="contraentrega"> Contra entrega</label>
+        <div class="contenedor-botones-pago">
+          <button type="button" class="boton-pago" data-metodo="tarjeta">
+            <i class="fas fa-credit-card"></i>
+            <span>Tarjeta</span>
+          </button>
 
-        <label>
-          <input type="checkbox" required>
-          Acepto los <a href="terminos.html">términos y condiciones</a>
-        </label>
+          <button type="button" class="boton-pago" data-metodo="yape">
+            <i class="fas fa-credit-card"></i>
+            <span>Yape</span>
+          </button>
+
+          <button type="button" class="boton-pago" data-metodo="contraentrega">
+            <i class="fas fa-money-bill"></i>
+            <span>Contra entrega</span>
+          </button>
+        </div>
+
+        <div id="contenido-pago">
+          <!-- Aquí aparecerán dinámicamente los campos según la opción -->
+        </div>
+
+        <div class="terminos-condiciones">
+          <input type="checkbox" id="acepto" required>
+          <label for="acepto">
+            Acepto los <a href="terminos.html">términos y condiciones</a>
+          </label>
+        </div>
+
 
         <button type="submit">Finalizar pedido</button>
         <button type="button" onclick="anteriorPaso(3)">Anterior</button>
       </form>
+
     </section>
     <!-- Resumen del pedido (lateral en desktop) -->
     <aside class="formulario-resumen">
