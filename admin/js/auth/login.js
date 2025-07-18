@@ -30,10 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const adminData = await response.json();
 
-            // Si más adelante usas token:
             // localStorage.setItem("adminToken", adminData.token);
 
-            window.location.href = "dashboard.html";
+            window.location.href = "admin-panel.html";
 
         } catch (error) {
             console.error("Error de red o servidor:", error);

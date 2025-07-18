@@ -14,6 +14,7 @@ export function registrarUsuario() {
             return;
         }
 
+        // Consumiendo API de Spring Boot
         try {
             const response = await fetch("http://localhost:8080/api/clientes/registrar", {
                 method: "POST",
@@ -23,14 +24,14 @@ export function registrarUsuario() {
                 body: JSON.stringify({ nombre, correo, contrasena })
             });
 
-            if (response.status === 201) {
+            if (response.status === 201) { // Creado
                 alert("Registro exitoso");
                 formRegistro.reset();
                 document.getElementById("mostrarLogin").click();
-            } else if (response.status === 409) {
+            } else if (response.status === 409) { // Conflictos si ya existe el correo
                 const error = await response.text();
                 alert(error || "El correo ya está registrado");
-            } else {
+            } else { // Cualquier otro codigo de estado
                 const error = await response.text();
                 alert("Error en el registro: " + error);
             }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clientes Registrados | Marbellin</title>
+  <link rel="stylesheet" href="../css/admin-clientes.css" />
+</head>
+
+<body>
+  <header>
+    <div class="menu-icon">&#9776;</div>
+    <img src="logo.png" alt="Logo Marbellin" class="logo" />
+  </header>
+
+  <main>
+    <h1>Clientes Registrados</h1>
+    <p>Lista de todos los clientes que han creado una cuenta.</p>
+
+    <div class="tabla-contenedor">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Fecha registro</th>
+          </tr>
+        </thead>
+        <tbody id="tablaClientes">
+          <!-- Filas generadas dinámicamente -->
+        </tbody>
+      </table>
+      <p id="mensajeVacio"></p>
+    </div>
+  </main>
+
+  <script src="../js/admin-clientes.js"></script>
+</body>
+
+</html>

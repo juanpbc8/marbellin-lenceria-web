@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrar Productos | Marbellin</title>
+  <link rel="stylesheet" href="../css/admin-productos.css" />
+</head>
+
+<body>
+  <header>
+    <div class="menu-icon">&#9776;</div>
+    <img src="logo.png" alt="Logo Marbellin" class="logo" />
+  </header>
+
+  <main>
+    <h1>Catálogo de Productos</h1>
+    <p>Visualiza los modelos disponibles y su información básica.</p>
+
+    <div class="tabla-contenedor">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Imagen</th>
+            <th>Modelo</th>
+            <th>Categoría</th>
+            <th>Precio (S/)</th>
+          </tr>
+        </thead>
+        <tbody id="tablaProductos">
+          <!-- JS insertará aquí los productos -->
+        </tbody>
+      </table>
+      <p id="mensajeVacio"></p>
+    </div>
+  </main>
+
+  <script src="../js/admin-productos.js"></script>
+</body>
+
+</html>

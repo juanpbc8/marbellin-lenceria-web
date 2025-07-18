@@ -86,7 +86,7 @@
     <section class="formulario">
       <h2>CONTÁCTANOS</h2>
       <p>Para nosotros es importante escucharte, porfavor dejanos tu duda,consulta o sugerencia.</p>
-      <form action="" method="post">
+      <form id="form-contacto">
         <label for="nombre">Nombre completo:</label>
         <input type="text" id="nombre" name="nombre" required>
 
@@ -102,7 +102,7 @@
         <label for="mensaje">Mensaje:</label>
         <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos más sobre ti..."></textarea>
 
-        <button>Enviar solicitud</button>
+        <button type="submit">Enviar solicitud</button>
       </form>
     </section>
     <!-- Whatsapp flotante -->
@@ -188,12 +188,15 @@
   </footer>
 
   <!-- Scripts -->
+  <script type="module" src="../js/cargar-ubicacion.js"></script>
   <script type="module" src="../js/cart/main-carrito.js"></script>
   <script type="module" src="../js/search/buscador.js"></script>
   <script type="module">
     import { configurarMenuUsuario } from "../js/auth/menuUsuario.js";
     configurarMenuUsuario();
   </script>
+  <script src="../js/post/enviarContacto.js"></script>
+  <script></script>
 
 </body>
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mensajes de Contacto | Marbellin</title>
+  <link rel="stylesheet" href="../css/admin-contactos.css" />
+</head>
+
+<body>
+  <header>
+    <div class="menu-icon">&#9776;</div>
+    <img src="logo.png" alt="Logo Marbellin" class="logo" />
+  </header>
+
+  <main>
+    <h1>Mensajes de Contacto</h1>
+    <p>Revisa los mensajes enviados por los usuarios desde el formulario.</p>
+
+    <div class="tabla-contenedor">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Asunto</th>
+            <th>Mensaje</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody id="tablaContactos">
+          <!-- Filas generadas dinámicamente -->
+        </tbody>
+      </table>
+      <p id="mensajeVacio"></p>
+    </div>
+  </main>
+
+  <script src="../js/admin-contactos.js"></script>
+</body>
+
+</html>
